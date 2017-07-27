@@ -1,11 +1,11 @@
 # tasks/pipeline.js
 
 
-### Purpose
+### Назначение
 
-The `pipeline.js` file in your Sails app determines the order in which your stylesheets,
-JavaScript, and client-side template files should be compiled and linked as `<script>`
-or `<link>` tags.
+Файл `pipeline.js` в вашем Sails приложении определяет порядок в котором ваши stylesheets,
+JavaScript, и client-side template files должны быть скомпилированы и связаны как `<script>`
+или `<link>` тэги.
 
 
 <docmeta name="displayName" value="pipeline.js">
