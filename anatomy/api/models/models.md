@@ -1,8 +1,8 @@
 # api/models/
 
-This is the directory that holds your models.  In Sails, models are the structures that contain data for your Sails App.
+Это рпапка которая содержит ваши модели.  В Sails, модели это структуры которые содержат данные вашего приложения Sails.
 
-When you call `sails generate api cats` via the command line from inside your project's root directory, Sails will generate the file `api/models/Cats.js` as well as a matching controller.  In the `myApp/api/models/Cats.js` file you can specify the attributes which determine how the records in your database will be defined.
+Если вы вызовите `sails generate api cats` в командной строке корневой папки вашего проекта, Sails сгенерирует файл `api/models/Cats.js` и соответствующий контроллер.  В файле `myApp/api/models/Cats.js` вы можете указать атрибуты, определяющие, как будут определены записи в вашей базе данных.
 
 
 
