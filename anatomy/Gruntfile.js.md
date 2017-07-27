@@ -1,13 +1,13 @@
 # Gruntfile.js
 
-### Purpose
+### Назначение
 
-Sails uses [Grunt](http://gruntjs.com) for asset management. This file contains the entry point for the default asset pipeline in Sails; that is, the code that does stuff like compiling LESS stylesheets, minifying scripts for production, and precompiling and injecting client-side templates.
+Sails использует [Grunt](http://gruntjs.com) для управления активами. Этот файл содержит точку входа для дефолтного пайплайна активов в Sails; тоесть, код который делает такие вещи как компиляцию LESS стилей, минификацию скриптов для продакшна, и прекомпиляцию и инъекцию client-side шаблонов.
 
-Sails' integration with Grunt is fully customizable, but for most use cases, this file (`Gruntfile.js`) should remain unchanged.  Instead, you can install Grunt plugins or add your own custom logic as new files in the [`tasks/`](./tasks) folder.
+Интеграция Sails с Grunt полностью настраиваема, но для большинства ситуаций, этот файл (`Gruntfile.js`) должен оставаться неизменным.  Лучше, устанавливать Grunt плагины или добавлять вашу кастомную логику в новые файлы в папку [`tasks/`](./tasks).
 
-> + To learn more about working with static assets in Sails, check out the [conceptual documentation on assets](http://sailsjs.com/documentation/concepts/assets).
-> + For a broader introduction to Grunt tasks in general, see [Grunt's docs on configuring tasks](http://gruntjs.com/configuring-tasks).
+> + Узнать больше о работе со статическими активами в Sails, можно тут [conceptual documentation on assets](http://sailsjs.com/documentation/concepts/assets).
+> + Более обширное введение в Grunt tasks in general, тут [Grunt's docs on configuring tasks](http://gruntjs.com/configuring-tasks).
 
 
 <docmeta name="displayName" value="Gruntfile.js">
