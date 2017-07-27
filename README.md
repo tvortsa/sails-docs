@@ -1,13 +1,13 @@
 ![Squiddy reads the docs](http://sailsjs.com/images/squidford_swimming.png)
 
-# Sails.js Documentation
+# Sails.js документация
 
-The official documentation for the current stable release of Sails is on the [master branch](github.com/balderdashy/sails-docs) of this repository.  Content for most sections on the [official Sails website](http://sailsjs.com) is compiled from here.
+Официальная документация для текущего стабильного релиза Sails здесь [master branch](github.com/balderdashy/sails-docs) этого реппозитория.  Содержание для большинства разделов [official Sails website](http://sailsjs.com) компилируется отсюда.
 
 
-## In other languages
+## На других языках
 
-The documentation for Sails has been translated to a number of different languages.  The list below is a reference of the translation projects we are aware of.
+Документация по Sails переведена на несколько языков.  The list below is a reference of the translation projects we are aware of.
 
 | Language                     | [IETF Language Tag](https://en.wikipedia.org/wiki/IETF_language_tag)  | Maintainer(s)        | Repo                               |
 | ---------------------------- | ------- | ------------------ | ---------------------------------- |
@@ -23,7 +23,7 @@ The documentation for Sails has been translated to a number of different languag
 
 
 
-## Contributing to the Sails docs
+## Участие в документации Sails
 
 We welcome your help!  Please send a pull request to **master** with corrections/additions and they'll be double-checked and merged as soon as possible.
 
@@ -44,11 +44,11 @@ On the other hand, if you are making an edit related to an unreleased feature in
 | [`0.11`](https://github.com/balderdashy/sails-docs/tree/0.11) | Sails v0.11.x           | [0.11.sailsjs.com](http://0.11.sailsjs.com)
 
 
-#### How are these docs compiled and pushed to the website?
+#### Как эта документация компилируется и помещается на веб-сайт?
 
-We use a module called `doc-templater` to convert the .md files to the html for the website. You can learn more about how it works in [the doc-templater repo](https://github.com/uncletammy/doc-templater).
+Мы используем модуль `doc-templater` для конвертации .md файлов в html для сайта. Вы можете узнать больше о том как это работает тут [the doc-templater repo](https://github.com/uncletammy/doc-templater).
 
-Each .md file has its own page on the website (i.e. all reference, concepts, and anatomy files), and should include a special `<docmeta name="displayName">` tag with a `value` property specifying the title for the page.  This will impact how the doc page appears in search engine results, and it will also be used as its display name in the navigation menu on sailsjs.com.  For example:
+Каждый .md файл имеет свою страницу на сайте (i.e. all reference, concepts, and anatomy files), и должны включать специальный тег `<docmeta name="displayName">` и свойство `value` задающее заголовок страницы.  Это повлияет на то, как страница документа появляется в результатах поисковой системы, И он также будет использоваться в качестве отображаемого имени в меню навигации на sailsjs.com.  например:
 
 ```markdown
 <docmeta name="displayName" value="Building Custom Homemade Puddings">
@@ -61,7 +61,7 @@ Documentation changes go live when they are merged onto a special branch corresp
 If you want to see how documentation changes will appear on sailsjs.com, you can visit [preview.sailsjs.com](http://preview.sailsjs.com). The preview site updates itself automatically as changes are merged into the master branch of sails-docs.
 
 
-#### How can I help translate the documentation?
+#### Как я могу помочь с переводом документации?
 
 A great way to help the Sails project, especially if you speak a language other than English natively, is to volunteer to translate the Sails documentation.  If you are interested in collaborating with any of the translation projects listed in the table above, contact the maintainer of the translation project using the instructions in the README of that fork.
 
