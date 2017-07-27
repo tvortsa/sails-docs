@@ -1,8 +1,8 @@
 # views/
 
-This is the directory that holds all of your custom views.
+Эта пака содержит все ваши кастомные views.
 
-To create a custom view, create a new directory inside of this then create a new .ejs file.  In order for it to be rendered by a client, you must either set up a route in `config/routes.js` or use the `res.view()` method inside of a custom controller action.
+Для создания кастомного view, создайте новую папку внутри этой а затем новый .ejs файл.  Для того, чтобы он отображался клиентом, Вы должны либо настроить маршрут в `config/routes.js` либо мспользовать метод `res.view()` внутри custom controller action.
 
 
 
