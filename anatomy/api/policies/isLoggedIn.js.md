@@ -1,16 +1,16 @@
 # policies/isLoggedIn.js
 
 
-This is a policy file.  Like any policy, you can apply it to any of your controller actions.  (See [config/policies.js](http://sailsjs.com/anatomy/config/policies-js) for more information on how to configure policies to apply to controller actions.)
+Это файл политики.  Как любую политику, вы можете применять его к любому вашему controller actions.  (See [config/policies.js](http://sailsjs.com/anatomy/config/policies-js) for more information on how to configure policies to apply to controller actions.)
 
-The main purpose of `isLoggedIn.js` is as an example.  But for many apps, this simple session authentication policy will actually be the only policy you need.  Use it to protect actions that _should never_ allow unauthenticated users.
+Основное назначение `isLoggedIn.js` это просто пример.  Но для могих приложений, эта простая политика аутентификации сессии будет актуальной и единственно необходимой.  Используйте ее для ограничения доступа к действиям которые _никогда не должны_ быть разрешены неавторизованным пользователям.
 
-### How it works
+### Как это работает
 This policy prevents access for all but authenticated users.  It simply checks `req.session.userId`, and if it is [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy), then it interprets that to mean this request came from a logged-in user.  So in that case, it proceeds to the next policy-- or, if this is the last policy, the relevant action.  Otherwise, if `req.session.userId` is _not_ truthy, the policy sends a 403 response using [`res.forbidden()`](http://sailsjs.com/documentation/reference/response-res/res-forbidden).
 
 
 ### Assumptions
-This policy assumes that, in the controller actions that you use to authenticate a user, you set `req.session.userId` to a truthy value.  A common best practice is to use the `id` of the signed-in user.  For example, you might include the following code in a `handleLogin` action that receives requests from your login form:
+Эта политика предполагает что, в controller actions которые вы используете для аутентификации пользователя, вы задали `req.session.userId` правдивое значение.  Общей практикой является использование `id` of the signed-in user.  Например, вы можете включить следующий код в `handleLogin` action Который получает запросы из вашей формы входа:
 
 ```js
 User.findOne({
@@ -32,11 +32,11 @@ User.findOne({
 });
  ```
 
-### More about policies
+### подробнее о политиках
 
 For more information about policies and how to use them in your app, see [Concepts > Policies](http://sailsjs.com/documentation/concepts/policies).
 
-> It's best to avoid implementing numerous or complex policies in your app.  Instead, when implementing features like granular, role-based permissions, rely on your [actions](http://sailsjs.com/docs/concepts/controllers) to reject unwanted access.  Your actions should also be responsible for any necessary personalization of the view locals and JSON response data you send in the response.
+> Лучше избегать внедрения многочисленных или сложных политик в вашем приложении.  Instead, when implementing features like granular, role-based permissions, rely on your [actions](http://sailsjs.com/docs/concepts/controllers) to reject unwanted access.  Your actions should also be responsible for any necessary personalization of the view locals and JSON response data you send in the response.
 >
 > For example, if you need to implement user-level or role-based permissions in your application, the most straightforward approach is to take care of the relevant checks at the top of your controller action-- either inline, or by calling out to a helper.  Following this best practice will significantly enhance the maintainability of your code.
 
