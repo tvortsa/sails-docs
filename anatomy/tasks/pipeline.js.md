@@ -1,8 +1,8 @@
 # tasks/pipeline.js
 
-The `pipeline.js` file in your Sails app determines the order in which your stylesheets,
-JavaScript, and client-side template files should be compiled and linked as `<script>`
-or `<link>` tags.
+Файл `pipeline.js` вашего Sails приложения определяет порядок в котором stylesheets,
+JavaScript, и client-side template должны компилироваться и линковаться в теги `<script>`
+или `<link>` .
 
 If you are not relying on [automatic asset linking](http://sailsjs.com/documentation/concepts/assets/task-automation#?asset-pipeline), then you can safely ignore this file.
 
