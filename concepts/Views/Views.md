@@ -38,14 +38,14 @@ Views объявляются в папке вашего приложения [`v
 
 ##### Что насчет одно-страничных приложений?
 
-If you are building a web application for the browser, part (or all) of your navigation may take place on the client; i.e. instead of the browser fetching a new HTML page each time the user navigates around, the client-side code preloads some markup templates which are then rendered in the user's browser without needing to hit the server again directly.
+Если вы создаете web приложение для браузера, частично (или полностью) ваша навигация может располагаться на клиенте; i.e. Вместо того, чтобы браузер получал новую HTML страницу каждый раз когда пользоатель navigates around, Клиентский код предварительно загружает некоторые шаблоны разметки, которые затем отображаются в браузере пользователя, без необходимости снова ударять по серверу.
 
-In this case, you have a couple of options for bootstrapping the single-page app:
+В таком случае, У вас есть несколько вариантов для загрузки одностраничного приложения:
 
-+ Use a single view, e.g. `views/publicSite.ejs`.  Advantages:
-  + You can use the view engine in Sails to pass data from the server directly into the HTML that will be rendered on the client.  This is an easy way to get stuff like user data to your client-side javascript, without having to send AJAX/WebSocket requests from the client.
-+ Use a single HTML page in your assets folder , e.g. `assets/index.html`. Advantages:
-  + Although you can't pass server-side data directly to the client this way, this approach allows you to further decouple the client and server-side parts of your application.
++ Использование единственного view, e.g. `views/publicSite.ejs`.  преимущества:
+  + Вы можете использовать view engine в Sails для передачи данных с сервера прямо в HTML которые будут отображаться на клиенте.  Это простой способ получить информацию, подобную пользовательским данным, на ваш клиентский javascript, без необходимости отсылать  AJAX/WebSocket запросы с клиента.
++ Использование единственного HTML page в вашей папке assets , e.g. `assets/index.html`. Преимущества:
+  + Хотя вы не можете передавать серверные данные непосредственно клиенту таким образом, Этот подход позволяет вам дополнительно отделить клиентскую и серверную части приложения.
   + Anything in your assets folder can be moved to a static CDN (like Cloudfront or CloudFlare), allowing you to take advantage of that provider's geographically distributed data centers to get your content closer to your users.
 
 
