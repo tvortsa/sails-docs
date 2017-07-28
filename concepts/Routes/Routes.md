@@ -1,16 +1,16 @@
 # Routes
 ### Обзор
 
-The most basic feature of any web application is the ability to interpret a request sent to a URL, then send back a response.  In order to do this, your application has to be able to distinguish one URL from another.
+Самая основная функция любого веб-приложения - возможность интерпретировать запрос, отправленный по URL-адресу, и затем отправить ответ.  Для этого, ваше приложение должно иметь возможность отличать один URL от другого.
 
-Like most web frameworks, Sails provides a router: a mechanism for mapping URLs to controllers and views.  **Routes** are rules that tell Sails what to do when faced with an incoming request.  There are two main types of routes in Sails: **custom** (or "explicit") and **automatic** (or "implicit").
+Как и большинство веб-фреймворков, Sails предоставляет router(маршрутизатор): механизм соотнесения URL-ов на контроллеры и виды.  **Routes** это правило которое сообщает Sails что делать столкнувшись с входящим запросом.  Есть два основных типа маршрутов в Sails: **custom** (или "eявный") и **automatic** (или "неявный").
 
 
 ### Custom Routes
 
-Sails lets you design your app's URLs in any way you like- there are no framework restrictions.
+Sails позволяет вам создавать URL-адреса вашего приложения любым способом - нет ограничений на фреймворк.
 
-Every Sails project comes with [`config/routes.js`](http://sailsjs.com/documentation/reference/sails.config/sails.config.routes.html), a simple [Node.js module](http://nodejs.org/api/modules.html) that exports an object of custom, or "explicit" **routes**. For example, this `routes.js` file defines six routes; some of them point to a controller's action, while others route directly to a view.
+Every Sails проект поставляется с [`config/routes.js`](http://sailsjs.com/documentation/reference/sails.config/sails.config.routes.html), простым [Node.js модулем](http://nodejs.org/api/modules.html) который экспортирует объект пользовательского, или "явного" **routes**. Например, этот файл `routes.js` определяет шесть маршрутов; некоторые из них указывают на controller's action, другие прямо на view.
 
 ```javascript
 // config/routes.js
@@ -25,13 +25,13 @@ module.exports.routes = {
 ```
 
 
-Each **route** consists of an **address** (on the left, e.g. `'get /me'`) and a **target** (on the right, e.g. `'UserController.profile'`)  The **address** is a URL path and (optionally) a specific [HTTP method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). The **target** can be defined a number of different ways ([see the expanded concepts section on the subject](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html)), but the two different syntaxes above are the most common.  When Sails receives an incoming request, it checks the **address** of all custom routes for matches.  If a matching route is found, the request is then passed to its **target**.
+Каждый **route** содержит **address** (слева, т.е. `'get /me'`) и **target** (справа, т.е. `'UserController.profile'`)  **address** это  URL путь и (опционально) определенный [HTTP метод](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). А **target** может быть определено несколькими различными способами ([смотрите раздел расширенных концепций on the subject](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html)), Но два разных синтаксиса, описанных выше, являются наиболее распространенными.  Когда Sails пинимает входящий запрос, он проверяет **address** всех пользовательских маршрутов на совпадение.  Если соответствующий маршрут найден, запрос передается его **target**.
 
-For example, we might read `'get /me': 'UserController.profile'` as:
+НАпример, мы могли бы прочитать `'get /me': 'UserController.profile'` как:
 
-> "Hey Sails, when you receive a GET request to `http://mydomain.com/me`, run the `profile` action of `UserController`, would'ya?"
+> "Эй Sails, если получишь запрос GET на `http://mydomain.com/me`, запусти `profile` action из `UserController`, ок?"
 
-What if I want to change the view layout within the route itself?  No problem we could:
+Что делать, если я хочу изменить view layout для маршрута?  Нет проблем:
 
 ```javascript
 'get /privacy': {
