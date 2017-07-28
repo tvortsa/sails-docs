@@ -1,25 +1,25 @@
 # Views
-### Overview
+### Обзор
 
-In Sails, views are markup templates that are compiled _on the server_ into HTML pages.  In most cases, views are used as the response to an incoming HTTP request, e.g. to serve your home page.
+В Sails, views (виды, представления) это шаблоны разметки, которые компилируются _на сервере_ в HTML страницы.  В большинстве случаев, views используются как ответы на входящие HTTP запросы, т.е. для обслуживания вашей домашней страницы.
 
-Alternatively, a view can be compiled directly into an HTML string for use in your backend code (see [`sails.renderView()`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).)  For instance, you might use this approach to send HTML emails, or to build big XML strings for use with a legacy API.
-
-
-##### Creating a view
-
-By default, Sails is configured to use EJS ([Embedded Javascript](http://embeddedjs.com/)) as its view engine.  The syntax for EJS is highly conventional- if you've worked with php, asp, erb, gsp, jsp, etc., you'll immediately know what you're doing.
-
-If you prefer to use a different view engine, there are a multitude of options.  Sails supports all of the view engines compatible with [Express](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) via [Consolidate](https://github.com/visionmedia/consolidate.js/).
-
-Views are defined in your app's [`views/`](http://sailsjs.com/documentation/anatomy/myApp/views) folder by default, but like all of the default paths in Sails, they are [configurable](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).  If you don't need to serve dynamic HTML pages at all (say, if you're building an API for a mobile app), you can remove the directory from your app.
+Альтернативно, view может быть скомпилирован прямо в HTML строку для использования в вашем коде бэкэнда (см [`sails.renderView()`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).)  Например, для отсылки HTML имэйлов, или сборки большой XML строки for use with a legacy API.
 
 
-##### Compiling a view
+##### Создание view
 
-Anywhere you can access the `res` object (i.e. a controller action, custom response, or policy), you can use [`res.view`](http://sailsjs.com/documentation/reference/res/res.view.html) to compile one of your views, then send the resulting HTML down to the user.
+По умолчанию, Sails сконфигурирован использовать EJS ([Embedded Javascript](http://embeddedjs.com/)) как движок для view.  Синтаксис EJS очень условный- если вы работали с php, asp, erb, gsp, jsp, etc., вы сразу же узнаете как он работает.
 
-You can also hook up a view directly to a route in your `routes.js` file.  Just indicate the relative path to the view from your app's `views/` directory.  For example:
+Если вы предпочитаете использовать другой view engine, there are a multitude of options.  Sails supports all of the view engines compatible with [Express](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) via [Consolidate](https://github.com/visionmedia/consolidate.js/).
+
+Views объявляются в папке вашего приложения [`views/`](http://sailsjs.com/documentation/anatomy/myApp/views) по умолчанию, но как и все дефолтные пути в Sails, they are [configurable](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).  Если вам не надо обслуживать динамические HTML страницы (скажем, если вы делаете API для мобильного приложения), можете удалить эту папку из своего приложения.
+
+
+##### Компиляция view
+
+Вы можете обращаться к объекту `res` отовсюду (т.e. controller action, custom response, или policy), можете использовать [`res.view`](http://sailsjs.com/documentation/reference/res/res.view.html) для компиляции ваших views, затем отошлите итоговый HTML пользователю.
+
+Вы также можете подключить view прямо в route в вашем файле `routes.js`.  Просто укжите соответствующий путь к view из папки `views/` вашего приложения.  Например:
 
 ```javascript
 {
@@ -32,11 +32,11 @@ You can also hook up a view directly to a route in your `routes.js` file.  Just 
   'get /signup/password': {
     view: 'signupFlow/chooseAPassword'
   },
-  // and so on.
+  // и т.д.
 }
 ```
 
-##### What about single-page apps?
+##### Что насчет одно-страничных приложений?
 
 If you are building a web application for the browser, part (or all) of your navigation may take place on the client; i.e. instead of the browser fetching a new HTML page each time the user navigates around, the client-side code preloads some markup templates which are then rendered in the user's browser without needing to hit the server again directly.
 
