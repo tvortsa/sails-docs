@@ -1,10 +1,10 @@
-# Models
+# Модели
 
-A model represents a collection of structured data, usually corresponding to a single table or collection in a database.  Models are usually defined by creating a file in an app's `api/models/` folder.
+Модель представляет собой набор структурированных данных, обычно соответствует одной таблице или коллекции в базе данных.  Обычно модель объявляют созданием файла в папке `api/models/` .
 
 ```javascript
 // Parrot.js
-// The set of parrots registered in our app.
+// Набор попугаев, зарегистрированных в нашем приложении.
 module.exports = {
   attributes: {
     // e.g., "Polly"
@@ -47,21 +47,21 @@ module.exports = {
 -->
 
 
-### Using models
+### Использование моделей
 
 
-Models may be accessed from our controllers, policies, services, responses, tests, and in custom model methods.  There are many built-in methods available on models, the most important of which are the query methods: [find](http://sailsjs.com/documentation/reference/waterline/models/find.html), [create](http://sailsjs.com/documentation/reference/waterline/models/create.html), [update](http://sailsjs.com/documentation/reference/waterline/models/update.html), and [destroy](http://sailsjs.com/documentation/reference/waterline/models/destroy.html).  These methods are [asynchronous](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) - under the covers, Waterline has to send a query to the database and wait for a response.
+Модели могут быть доступны из наших контроллеров, policies, services, responses, tests, и в custom model methods.  На моделях доступно множество встроенных методов, наиболее важными из которых являются методы запросов: [find](http://sailsjs.com/documentation/reference/waterline/models/find.html), [create](http://sailsjs.com/documentation/reference/waterline/models/create.html), [update](http://sailsjs.com/documentation/reference/waterline/models/update.html), и [destroy](http://sailsjs.com/documentation/reference/waterline/models/destroy.html).  Эти методы [asynchronous](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) - за кадром, Waterline посылает запрос в БД и ждет ответа.
 
 
-Consequently, query methods return a deferred query object.  To actually execute a query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete.
+Вследствие этого, методы запроса возвращают объект отложенного запроса.  Чтобы выполнить запрос,  `.exec(cb)` должен быть вызван на этот отложенный объект, где `cb` функция обратного вызова, которая будет запущена после завершения запроса.
 
-Waterline also includes opt-in support for promises.  Instead of calling `.exec()` on a query object, we can call `.then()`, `.spread()`, or `.catch()`, which will return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
-
-
+Waterline также включает поддержку promises.  Вместо того, чтобы вызывать `.exec()` на объекте запроса, мы можем вызвать `.then()`, `.spread()`, или `.catch()`, которые вернут [Bluebird promise](https://github.com/petkaantonov/bluebird).
 
 
 
-### Model Methods (aka "static" or "class" methods)
+
+
+### Model Methods (типа "static" или "class" methods)
 
 Model class methods are functions built into the model itself that perform a particular task on its instances (records).  This is where you will find the familiar CRUD methods for performing database operations like `.create()`, `.update()`, `.destroy()`, `.find()`, etc.
 
