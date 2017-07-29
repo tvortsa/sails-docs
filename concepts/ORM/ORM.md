@@ -13,21 +13,21 @@ Sails поставляется с мощным [ORM/ODM](http://stackoverflow.co
 
 ### Scenario
 
-Давайте представим, вы создаете сайт электронной коммерции, с сопутствующим мобильным приложением.  Пользователи просматривают продукты по категориям или ищут продукты по ключевым словам, затем они покупают их.  Это все!  Some parts of your app are quite ordinary; you have an API-driven flow for logging in, signing up, order/payment processing, resetting passwords, etc. However, you know there are a few mundane features lurking in your roadmap that will likely become more involved.  Sure enough:
+Давайте представим, вы создаете сайт электронной коммерции, с сопутствующим мобильным приложением.  Пользователи просматривают продукты по категориям или ищут продукты по ключевым словам, затем они покупают их.  Это все!  Некоторые части вашего приложения довольно обычны; у вас есть поток, управляемый API, для входа в систему, signing up, order/payment processing, resetting passwords, etc. Тем не менее, вы знаете, что в вашей дорожной карте скрывается несколько мирских функций, которые, вероятно, станут более активными.  Sure enough:
 
-##### Flexibility
+##### Гибкость
 
-_You ask the business what database they would like to use:_
+_Вы спрашиваете у бизнеса, какую базу данных они хотели бы использовать:_
 
-> "Datab... what?  Let's not be hasty, wouldn't want to make the wrong choice.  I'll get ops/IT on it.  Go ahead and get started though."
+> "Datab... what?  давайте не будем спешить, не хотим делать неправильный выбор.  I'll get ops/IT on it.  Go ahead and get started though."
 
 The traditional methodology of choosing one single database for a web application/API is actually prohibitive for many production use cases.  Oftentimes the application needs to maintain compatibility with one or more existing data sets, or it is necessary to use a few different types of databases for performance reasons.
 
-Since Sails uses `sails-disk` by default, you can start building your app with zero configuration, using a local temporary file as storage.  When you're ready to switch to the real thing (and when everyone knows what that even is), just change your app's [connection configuration](http://sailsjs.com/documentation/reference/configuration/sails-config-connections).
+Since Sails использует по умолчанию `sails-disk` , Вы можете начать создавать свое приложение с нулевой конфигурацией, using a local temporary file as storage.  When you're ready to switch to the real thing (and when everyone knows what that even is), just change your app's [connection configuration](http://sailsjs.com/documentation/reference/configuration/sails-config-connections).
 
 
 
-##### Compatibility
+##### Совместимость
 
 _The product owner/stakeholder walks up to you and says:_
 
@@ -59,7 +59,7 @@ Custom Waterline adapters are actually [pretty simple to build](https://github.c
 
 ### Connections
 
-A **connection** represents a particular database configuration.  This configuration object includes an adapter to use, as well as information like the host, port, username, password, and so forth.  If your database doesn't require a password simply delete the password property. Connections are defined in [`config/connections.js`](http://sailsjs.com/documentation/reference/sails.config/sails.config.connections.html).
+ **connection** представляет собой конкретную конфигурацию базы данных.  Этот объект конфигурации включает адаптер для использования, а также информацию, такую как хост, порт, имя пользователя, пароль и т. Д..  Если ваша база данных не требует пароля, просто удалите свойство пароля. Connections определены в [`config/connections.js`](http://sailsjs.com/documentation/reference/sails.config/sails.config.connections.html).
 
 ```javascript
 // in config/connections.js
@@ -74,7 +74,7 @@ A **connection** represents a particular database configuration.  This configura
 // ...
 ```
 
-Depending on the adapter in use, it's also possible to use unix sockets, without port and host or a URL. Here's an example using an existing MAMP mysql server and sails-mysql adapter:
+В зависимости от используемого адаптера, также можно использовать unix сокеты, without port and host or a URL. Here's an example using an existing MAMP mysql server and sails-mysql adapter:
 
 ```javascript
 // in config/local.js
@@ -106,21 +106,21 @@ connections:{
 ```
 
 
-The default database connection for a Sails app is located in the base model configuration (`config/models.js`), but it can also be overriden on a per-model basis by specifying a [`connection`](http://sailsjs.com/documentation/reference/sails.config/sails.config.connections.html).
-Often it is also useful override the connections object in [`config/local.js`](http://sailsjs.com/documentation/concepts/configuration/the-local-js-file)
+Соединение с базой данных по умолчанию для приложения Sails находится в base model configuration (`config/models.js`), но его также можно переоценить на основе каждой модели, указав [`connection`](http://sailsjs.com/documentation/reference/sails.config/sails.config.connections.html).
+Часто также полезно переопределить объект соединений в [`config/local.js`](http://sailsjs.com/documentation/concepts/configuration/the-local-js-file)
 
 
 ### Analogy
 
-Imagine a file cabinet full of completed pen-and-ink forms. All of the forms have the same fields (e.g. "name", "birthdate", "maritalStatus"), but for each form, the _values_ written in the fields vary.  For example, one form might contain "Lara", "2000-03-16T21:16:15.127Z", "single", while another form contains "Larry", "1974-01-16T21:16:15.127Z", "married".
+Представьте себе файловый кабинет, заполненный заполненными формами пера и чернил. Все формы имеют одинаковые поля (e.g. "name", "birthdate", "maritalStatus"), но для каждой формы, _значения_ записанные в полях - разные.  Например, одна форма может содержать "Lara", "2000-03-16T21:16:15.127Z", "single", а другая "Larry", "1974-01-16T21:16:15.127Z", "married".
 
-Now imagine you're running a hotdog business.  If you were _very_ organized, you might set up your file cabinets as follows:
+Теперь представьте, что вы управляете хот-дог закусочной.  Если вы _очень_ организованы, Вы можете настроить свои файловые шкафы следующим образом:
 
-+ **Employee** (contains your employee records)
++ **Employee** (содержит записи вашего сотрудника)
   + `fullName`
   + `hourlyWage`
   + `phoneNumber`
-+ **Location** (contains a record for each location you operate)
++ **Location** (содержит запись для каждого местоположения, в котором вы работаете)
   + `streetAddress`
   + `city`
   + `state`
@@ -129,11 +129,11 @@ Now imagine you're running a hotdog business.  If you were _very_ organized, you
     + a list of all the purchases made at this location
   + `manager`
     + the employee who manages this location
-+ **Purchase** (contains a record for each purchase made by one of your customers)
++ **Purchase** (содержит запись для каждой покупки, сделанной одним из ваших клиентов)
   + `madeAtLocation`
   + `productsPurchased`
   + `createdAt`
-+ **Product** (contains a record for each of your various product offerings)
++ **Product** (содержит запись для каждого из ваших различных предложений продуктов)
   + `nameOnMenu`
   + `price`
   + `numCalories`
@@ -142,7 +142,7 @@ Now imagine you're running a hotdog business.  If you were _very_ organized, you
     + a list of the locations where this product offering is available.
 
 
-In your Sails app, a **model** is like one of the file cabinets.  It contains **records**, which are like the forms.  `Attributes` are like the fields in each form.
+В приложении Sails,  **model** как один из файловых шкафов.  Она содержит **records**, которые подобны формулярам.  `Attributes` как поля в каждом из них.
 
 
 
