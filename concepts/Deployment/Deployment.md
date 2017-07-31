@@ -1,10 +1,10 @@
-# Deployment
+# Развертывание
 
-### Before You Deploy
+### Перед развертыванием
 
-Before you launch any web application, you should ask yourself a few questions:
+Перед запуском любого веб-приложения вы должны задать себе несколько вопросов:
 
-+ What is your expected traffic?
++ Каков ваш ожидаемый трафик?
 + Are you contractually required to meet any uptime guarantees, e.g. a Service Level Agreement (SLA)?
 + What sorts of front-end apps will be "hitting" your infrastructure?
   + Android/iOS/Windows Phone apps
@@ -20,35 +20,35 @@ Before you launch any web application, you should ask yourself a few questions:
 
 
 
-### Configuring Your App For Production
+### Настройка приложения для Production
 
-You can provide configuration which only applies in production in a [few different ways](http://sailsjs.com/documentation/reference/configuration).  Most apps find themselves using a mix of environment variables and `config/env/production.js`.  But regardless of how you go about it, this section and the [Scaling section](http://sailsjs.com/documentation/concepts/deployment/scaling) of the documentation cover the configuration settings you should review and/or change before going to production.
+Вы можете предоставить конфигурацию, которая применяется только в [несколькими разными путями](http://sailsjs.com/documentation/reference/configuration).  Большинство приложений обнаруживают, что используют сочетание переменных среды и `config/env/production.js`.  Но независимо от того, как вы это делаете, Этот раздел и [Scaling раздел](http://sailsjs.com/documentation/concepts/deployment/scaling) документации раскрывает араметры конфигурации, которые вы должны просмотреть и / или изменить перед тем, как перейти к production.
 
 
 
-### Deploying On a Single Server
+### Развертывание на одном сервере
 
-Node.js is pretty darn fast.  For many apps, one server is enough to handle the expected traffic-- at least at first.
+Node.js весьма быстрый.  Для большинства приложений, одного сервера достаточно для обработки ожидаемого трафика-- по крайней мере, сначала.
 
-> This section focuses on _single-server Sails deployment_.  This kind of deployment is inherently limited in scale.  See [Scaling](http://sailsjs.com/documentation/concepts/deployment/scaling) for information about deploying your Sails/Node app behind a load balancer.
+> Это раздел фокусируется на _single-server Sails deployment_.  Такое развертывание по своей сути ограничено по масштабам.  См. [Scaling](http://sailsjs.com/documentation/concepts/deployment/scaling) for information about deploying your Sails/Node app behind a load balancer.
 
 Many teams decide to deploy their production app behind a load balancer or proxy (e.g. in a PaaS like Heroku or Modulus, or behind an nginx server).  This is often the right approach since it helps future-proof your app in case your scalability needs change and you need to add more servers.  If you are using a load balancer or proxy, there are a few things in the list below that you can ignore:
 
-+ don't worry about configuring Sails to use an SSL certificate.  SSL will almost always be resolved at your load balancer/proxy server, or by your PaaS provider.
++ не беспокойтесь о настройке Sails дляиспользования SSL сертификата.  SSL почти всегда решается вашим load balancer/proxy сервером, или вашим PaaS провайдером.
 + you _probably_ don't need to worry about setting your app to run on port 80 (if not behind a proxy like nginx). Most PaaS providers automatically figure out the port for you.  If you are using a proxy server, please refer to its documentation (whether or not you need to configure the port for your Sails app depends on how you set things up and can vary widely based on your needs).
 
 > If your app uses sockets and you're using nginx, be sure to configure it to relay websocket messages to your server. You can find guidance on proxying WebSockets in [nginx's docs on the subject](http://nginx.org/en/docs/http/websocket.html).
 
 
-##### Set the `NODE_ENV` environment variable to `'production'`
+##### Настройка `NODE_ENV` переменной окружения на `'production'`
 
-Configuring your app's environment config to `'production'` tells Sails to get its game face on; i.e. that your app is running in a production environment.  This is, hands down, the most important step. If you only have the time to change _one setting_ before deploying your Sails app, _this should be that setting_!
+Установка конфигурации приложения в приложении в `'production'` говорит Sails to get its game face on; т.e. ваше приложение работает в production environment.  Это наиболее важный шаг. Если у вас есть время, чтобы изменить только _jlye yfcnhjqre_ перед развертыванием вашего приложения Sails, _то это должна быть эта настройка_!
 
-When your app is running in a production environment:
-  + Middleware and other dependencies baked into Sails switch to using more efficient code.
-  + All of your [models' migration settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings) are forced to `migrate: 'safe'`.  This is a failsafe to protect against inadvertently damaging your production data during deployment.
-  + Your asset pipeline runs in production mode (if relevant).  Out of the box, that means your Sails app will compile all stylesheets, client-side scripts, and precompiled JST templates into minified `.css` and `.js` files to decrease page load times and reduce bandwidth consumption.
-  + Error messages and stack traces from `res.serverError()` will still be logged, but will not be sent in the response (this is to prevent a would-be attacker from accessing any sensitive information, such as encrypted passwords or the path where your Sails app is located on the server's file system)
+Когда ваше приложение запущено в окружении production:
+  + Middleware и другие зависимости dependencies запеченные в Sails переключаются на более эффективный код.
+  + Все ваши [models' migration settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings) переводятся в режим  `migrate: 'safe'`.  Это безопасное средство защиты от непреднамеренного повреждения производственных данных во время развертывания.
+  + Ваш asset pipeline запускается в production режиме (if relevant).  Из коробки это значит что Sails приложение скомпилирует все  stylesheets, client-side scripts, и precompiled JST templates в minified `.css` и `.js` файлы.
+  + Error messages и stack traces из `res.serverError()` продолжат логгироваться, но не будут направлены в ответ (Это предотвращает доступ потенциального злоумышленника к любой конфиденциальной информации, такой как encrypted passwords или path where your Sails app is located on the server's file system)
 
 
 >**Note:**
@@ -57,7 +57,7 @@ When your app is running in a production environment:
 
 
 
-##### Configure your app to run on port 80
+##### Настройте приложение для работы на порту 80
 
 Whether it's by using the `sails_port` environment variable, setting the `--port` command-line option, or changing your production config file(s), add the following to the top level of your Sails config:
 
@@ -103,25 +103,25 @@ If your API or website does anything that requires authentication, you should us
 
 ##### Lift Your App
 
-The last step of deployment is actually starting the server.  For example:
+Последний шаг в развертывании - запуск вашего сервера.  Нарример:
 
 ```bash
 NODE_ENV=production node app.js
 ```
 
-Or if you're more comfortable with command-line options you can use `--prod`:
+Или, если вам удобнее использовать параметры командной строки, вы можете использовать `--prod`:
 
 ```
 node app.js --prod
-# (Sails will set `NODE_ENV` automatically)
+# (Sails установит `NODE_ENV` автоматически)
 ```
 
-As you can see, instead of `sails lift` you should start your Sails app with `node app.js` in production.  This way, your app does not rely on having access to the `sails` command-line tool; it just runs the `app.js` file bundled in your Sails app (which does exactly the same thing).
+Как видите, вместо `sails lift` вы долджны запускать приложение Sails app командой `node app.js` в продакшне.  Таким образом, ваше приложение не полагается на доступ к инструменту командной строки `sails`; it just runs the `app.js` file bundled in your Sails app (which does exactly the same thing).
 
 
 ##### ...And Keep It Lifted
 
-Unless you are not deploying to a PaaS like Heroku or Modulus, you will want to use a tool like [`pm2`](http://pm2.keymetrics.io/) or [`forever`](https://github.com/foreverjs/forever) to make sure your app server will start back up if it crashes.  Regardless of the daemon you choose, you'll want to make sure that it starts the server as described above.
+Если вы не развертываете на PaaS типа Heroku или Modulus,Вы захотите использовать такой инструмент, как [`pm2`](http://pm2.keymetrics.io/) или [`forever`](https://github.com/foreverjs/forever) Чтобы убедиться, что ваш сервер приложений начнет резервное копирование, если он крашнется.  Независимо от выбранного вами демона, вы должны убедиться, что он запускает сервер, как описано выше.
 
 For convenience, here are example lift commands for both `pm2` and `forever`:
 
