@@ -1,14 +1,14 @@
 # Request (`req`)
 
-Sails is built on [Express](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md), and uses [Node's HTTP server](http://nodejs.org/api/http.html) conventions.  Because of this, you can access all of the Node and Express methods and properties on the `req` object whereever it is accessible (i.e. in your controllers, policies, and custom responses.)
+Sails построен поверх [Express](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md), и использует [Node's HTTP server](http://nodejs.org/api/http.html) соглашения.  Поэтому, вам доступны все Node и Express методы и свойства в объекте `req` везде где он доступен (т.e. в controllers, policies, и custom responses.)
 
-A nice side effect of this compatibility is that, in many cases, you can paste existing Node.js code into a Sails app and it will work.  And since Sails implements a transport-agnostic request interpreter, the code in your Sails app is WebSocket-compatible as well.
+Хорошим побочным эффектом этой совместимости является то, что во многих случаях вы можете вставить существующий код Node.js в приложение Sails, и он будет работать.  И поскольку Sails реализует транспортно-агностический запрос-интерпретатор, код в вашем приложении Sails также совместим с WebSocket.
 
-Sails adds a few methods and properties of its own to the `req` object, like [`req.wantsJSON`](http://sailsjs.com/documentation/reference/req/req.wantsJSON.html) and [`req.allParams()`](http://sailsjs.com/documentation/reference/req/req.allParams.html).  These features are syntactic sugar on top of the underlying implementation, and also support both HTTP and WebSockets.
+Sails добавляет несколько методов и собственных свойств к объекту `req`, like [`req.wantsJSON`](http://sailsjs.com/documentation/reference/req/req.wantsJSON.html) and [`req.allParams()`](http://sailsjs.com/documentation/reference/req/req.allParams.html).  Эти функции представляют собой синтаксический сахар поверх базовой реализации, а также поддерживают как HTTP, так и WebSockets.
 
 ### Protocol Support
 
-The chart below describes support for the methods and properties on the Sails [Request](http://sailsjs.com/documentation/reference/req) object (`req`) across multiple transports:
+В приведенной ниже таблице описывается поддержка методов и свойств объекта Sails [Request](http://sailsjs.com/documentation/reference/req)  (`req`) across multiple transports:
 
 <!-- TODO: add SPDY -->
 
