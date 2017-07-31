@@ -1,15 +1,14 @@
 # Application (`sails`)
 
-The Sails application object contains all relevant runtime state for a Sails application.
-By default it is exposed globally as `sails`, but this behavior [can be disabled](http://sailsjs.com/documentation/reference/configuration/sails-config-globals), e.g. for
+Объект Sails application содержит все relevant runtime state для Sails приложения.
+По-умолчанию он представлен глобально как `sails`, но это [можно отключить](http://sailsjs.com/documentation/reference/configuration/sails-config-globals), e.g. for
 use cases where multiple Sails app instances need to exist at once, or where globals
-are not an option. The application object can also always be accessed on an incoming
-request (`req._sails`), and inside of [model](http://sailsjs.com/documentation/concepts/models-and-orm/models) and [service](http://sailsjs.com/documentation/concepts/services) modules via `this.sails`.
+are not an option. Объект приложения также всегда доступен через запрос (`req._sails`), и внутри [model](http://sailsjs.com/documentation/concepts/models-and-orm/models) и [service](http://sailsjs.com/documentation/concepts/services) через модуль `this.sails`.
 
-### How does it work?
+### Как это работает?
 
-An application instance is automatically created the first time you `require('sails')`.
-This is what is happening in the generated `app.js` file:
+Экземпляр приложения автоматически создается при первом запуске `require('sails')`.
+Это то, что происходит в сгенерированном файле `app.js`:
 
 ```javascript
 var sails = require('sails');
@@ -18,21 +17,21 @@ var sails = require('sails');
 
 
 
-### Properties
+### Свойства
 
-The application object has a number of methods and properties which are useful.
-The officially supported methods on the `sails` object are covered by the other
-pages in this section.  Here are a few of its most useful properties:
+Объект приложения имеет ряд методов и свойств, которые полезны.
+Официально поддерживаемые методы объекта `sails` раскрываются на других
+страницах этого раздела.  Вот несколько из его самых полезных свойств:
 
 ##### sails.models
 
-A dictionary of all loaded [Sails models](http://sailsjs.com/documentation/concepts/models-and-orm/models), indexed by their _identity_.
+Словарь всех загруженных [Sails моделей](http://sailsjs.com/documentation/concepts/models-and-orm/models), индексированных по их _identity_.
 
-By default, a model's identity is the lowercased version of its filename, without the **.js** extension.  For example, the default identity for a model loaded from `api/models/PowerPuff.js` would be `powerpuff`, and the model would be accessible via `sails.models.powerpuff`.  A model's identity can be customized by setting an `identity` property in its module file.
+По умолчанию, identity модели это lowercased версия ее имени, без расширения **.js**.  Например, default identity для модели загруженной как `api/models/PowerPuff.js` будет `powerpuff`, и она будет доступна через `sails.models.powerpuff`.  A model's identity can be customized by setting an `identity` property in its module file.
 
 ##### sails.config
 
-The full set of configuration options for the Sails instance, loaded from a combination of environment variables, `.sailsrc` files, user-configuration files and defaults.  See the [configuration concepts section](http://sailsjs.com/documentation/concepts/configuration) for a full overview of configuring Sails, and the [configuration reference](http://sailsjs.com/documentation/reference/configuration) for details on individual options.
+Все настройки данного экземпляра Sails, loaded from a combination of environment variables, `.sailsrc` files, user-configuration files and defaults.  See the [configuration concepts section](http://sailsjs.com/documentation/concepts/configuration) for a full overview of configuring Sails, and the [configuration reference](http://sailsjs.com/documentation/reference/configuration) for details on individual options.
 
 ##### sails.sockets
 
