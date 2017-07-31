@@ -1,33 +1,32 @@
-# Model Settings
+# Настройки модели
 
-In Sails, the top-level properties of model definitions are called **model settings**.  This includes everything from [attribute definitions](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?attributes), to the [database settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?connection) the model will use, as well as a number of other options.
+В Sails, свойства верхнего уровня определения модели называются **model settings**.  Они включают все из [attribute definitions](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?attributes), в [database settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?connection) модель будет использовать, а также ряд других опций.
 
-The majority of this page is devoted to a complete tour of the model settings supported by Sails.  But before we begin, let's look at how to actually apply these settings in a Sails app.
+Большая часть этой страницы посвящена полному просмотру параметров модели, поддерживаемых Sails. Но прежде чем мы начнем, давайте рассмотрим, как применять эти параметры в приложении Sails
 
+### Обзор
 
-### Overview
+Параметры модели позволяют настраивать поведение моделей в приложении Sails.  Они могут быть указаны на основе каждой модели, устанавливая свойства верхнего уровня в [model definition](http://sailsjs.com/documentation/concepts/models-and-orm/models), или в качестве стандартных значений по умолчанию в приложении [`sails.config.models`](http://sailsjs.com/documentation/reference/configuration/sails-config-models).
 
-Model settings allow you to customize the behavior of the models in your Sails app.  They can be specified on a per-model basis by setting top-level properties in a [model definition](http://sailsjs.com/documentation/concepts/models-and-orm/models), or as app-wide defaults in [`sails.config.models`](http://sailsjs.com/documentation/reference/configuration/sails-config-models).
+##### Изменение настроек модели по умолчанию
 
-##### Changing default model settings
+Для изменения [default model settings](http://sailsjs.com/documentation/reference/configuration/sails-config-models) разделяемых всеми моделями вашего приложения, редактируйте файл [`config/models.js`](http://sailsjs.com/documentation/anatomy/my-app/config/models-js).
 
-To modify the [default model settings](http://sailsjs.com/documentation/reference/configuration/sails-config-models) shared by all of the models in your app, edit [`config/models.js`](http://sailsjs.com/documentation/anatomy/my-app/config/models-js).
-
-For example, if you edit `config/models.js` so that it contains `connection: 'somePostgresqlDb'`, then, assuming you've defined a connection named `somePostgresqlDb`, you'll set PostgreSQL as your default database.  In other words, unless overridden, all of your app's models will use that PostgreSQL datastore any time built-in model methods like `.create()` or `.find()` are executed.
-
-
-##### Overriding settings for a particular model
-
-To further customize these settings for a particular model, you can specify them as top-level properties in that model's definition file (e.g. `api/models/User.js`).  This will override default model settings with the same name.
-
-For example, if you add `autoUpdatedAt: false` to one of your model definitions (`api/models/UploadedFile.js`), then that model will no longer have an implicit `updatedAt` attribute.  But the rest of your models will be unaffected; they will still use the default setting (which is `autoUpdatedAt: true`, unless you've changed it).
+Например, если вы измените `config/models.js` так чтобы он содержал `connection: 'somePostgresqlDb'`, то, предположив, что вы определили соединение с именем `somePostgresqlDb`, вы установите PostgreSQL в качестве дефолтной. Иначе говоря все модели вашего приложения будут использовать PostgreSQL DATASTORE всегда для встроенных методов модели, таких как `.create()` или `.find()` .
 
 
-##### Which approach should I use?
+##### Переопределение настроек для конкретной модели
 
-By convention, attribute definitions are specified in individual model files.  Most other model settings, like `schema` and `connection`, should be specified app-wide unless you need to override them for a particular model; for example, if your default datastore is PostgreSQL, but you have an `CachedBloodworkReport` model that you want to live in Redis.
+Чтобы дополнительно настроить эти параметры для конкретной модели, вы можете указать их как свойства верхнего уровня в файле определения этой модели (e.g. `api/models/User.js`).  Это приведет к переопределению настроек модели по умолчанию с тем же именем.
 
-Now that you know what model settings are in general, and how to configure them, let's run through and have a look at each one.
+Например, если вы добавите `autoUpdatedAt: false` к одному из определений вашей модели (`api/models/UploadedFile.js`), То эта модель больше не будет иметь аттрибут `updatedAt`.  Но остальные модели не изменятся; они по-прежнему будут использовать настройку по умолчанию (which is `autoUpdatedAt: true`, unless you've changed it).
+
+
+##### Какой подход следует использовать?
+
+По соглашению определения атрибутов указываются в отдельных файлах модели.  Большинство других параметров модели, таких как `schema` и` connection`, должны быть указаны в приложении, если вам не нужно переопределять их для конкретной модели; например, если ваше хранилище данных по умолчанию - PostgreSQL, но у вас есть модель `CachedBloodworkReport` которая должна быть в Redis.
+
+Теперь, когда вы знаете, какие параметры модели в целом и как их настроить, давайте пройдём и посмотрим на каждый.
 
 --------------------
 
@@ -38,7 +37,7 @@ Now that you know what model settings are in general, and how to configure them,
 migrate: 'safe'
 ```
 
-The `migrate` setting controls the **auto-migration strategy** that Sails will run every time your app loads.  In short, this tells Sails whether or not you'd like it to attempt to automatically rebuild the tables/collections/sets/etc. in your database(s).
+Настройка `migrate` управляет **стратегией авто-миграции** которую Sails будет запускаться каждый раз, когда ваше приложение загружается.  Вкратце, это сообщает Sails хотите ли вы попытаться автоматически перестроить tables/collections/sets/etc. в вашей базе (базах).
 
 ##### Database migrations
 
