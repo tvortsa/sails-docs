@@ -1,9 +1,10 @@
 # assets/dependencies/
 
-This directory allows grunt to load JavaScript dependencies in index.ejs before the rest of the JavaScript files in the js directory.
+Этот каталог позволяет grunt загружать JavaScript dependencies в index.ejs раньше остальных JavaScript файлов в папке js.
 
 
-This setup will create
+Эта настройка создаст
+
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
