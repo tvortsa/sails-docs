@@ -1,6 +1,6 @@
 # assets/js/dependencies
-### Purpose
-This directory allows grunt to load javascript files in index.ejs before the rest of the javascript files in the js directory.
+### НАзначение
+Эта папка позволяет grunt загружать javascript файлы в index.ejs до того как загрузятся остальные javascript файлы в папке js.
 
     js/
     | main.js
@@ -8,7 +8,7 @@ This directory allows grunt to load javascript files in index.ejs before the res
     | dependencies/
     | | sails.io.js
 
-This setup will create
+Такой сетап создаст:
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
