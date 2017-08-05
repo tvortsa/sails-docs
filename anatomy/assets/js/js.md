@@ -1,6 +1,6 @@
 # assets/js
-### Purpose
-This is where you put client-side javascript files that you want to be statically hosted by your app.  Sails puts a few in there for making communication via socket.io easier.
+### Назначение
+Сюда вы помещаете клиент-side javascript файлы которые должно статически хостить ваше приложение.  Sails помещает несколько сюда для настройки соединений через socket.io .
 
 
 <docmeta name="displayName" value="js">
