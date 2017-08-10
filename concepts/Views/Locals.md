@@ -1,27 +1,27 @@
 # Locals
 
-The variables accessible in a particular view are called `locals`.  Locals represent server-side data that is _accessible_ to your view-- locals are not actually _included_ in the compiled HTML unless you explicitly reference them using special syntax provided by your view engine.
+Переменные, доступные в определенном  view называют `locals`.  Locals представляют server-side данные которые _accessible_ в вашем view-- locals на самом деле не _included_ в скомпилированный HTML сли вы явно не ссылаетесь на них с помощью специального синтаксиса предоставляемого вашим view engine.
 
 ```ejs
 <div>Logged in as <a><%= name %></a>.</div>
 ```
 
-### Using locals in your views
+### Использование locals в вашем views
 
-The notation for accessing locals varies between view engines.  In EJS, you use special template markup (e.g. `<%= someValue %>`) to include locals in your views.
+Нотация для доступа к locals в разных view engines различается.  В EJS, вы используете специальный template markup ( `<%= someValue %>`) для включения locals в ваши views.
 
-There are three kinds of template tags in EJS:
+Вот три случая template tags в EJS:
 + `<%= someValue %>`
-  + HTML-escapes the `someValue` local, and then includes it as a string.
+  + HTML-экранирует  `someValue` local, и затем включает его как строк.
 + `<%- someRawHTML %>`
   + Includes the `someRawHTML` local verbatim, without escaping it.
   + Be careful!  This tag can make you vulnerable to XSS attacks if you don't know what you're doing.
 + `<% if (!loggedIn) { %>  <a>Logout</a>  <% } %>`
-  + Runs the JavaScript inside the `<% ... %>` when the view is compiled.
-  + Useful for conditionals (`if`/`else`), and looping over data (`for`/`each`).
+  + Запускает JavaScript внутри `<% ... %>` когда view компилируется.
+  + Полезно для условий (`if`/`else`), и обхода данных в цикле (`for`/`each`).
 
 
-Here's an example of a view (`views/backOffice/profile.ejs`) using two locals, `user` and `corndogs`:
+Вот пример view (`views/backOffice/profile.ejs`) использующего 2 locals, `user` и `corndogs`:
 
 ```ejs
 <div>
@@ -35,9 +35,9 @@ Here's an example of a view (`views/backOffice/profile.ejs`) using two locals, `
 </div>
 ```
 
-> You might have noticed another local, `_`.  By default, Sails passes down a few locals to your views automatically, including lodash (`_`).
+> Возможно, вы заметили еще один local, `_`.  По-умолчанию, Sails ередает несколько locals в ваш views автоматически, включая lodash (`_`).
 
-If the data you wanted to pass down to this view was completely static, you don't necessarily need a controller- you could just hard-code the view and its locals in your `config/routes.js` file, i.e:
+Если данные, которые вы хотели бы передать в этот view полностью статичны, вам необязателен controller- можно просто hard-code ваш view и его locals в вашем файле `config/routes.js` , типа:
 
 ```javascript
   // ...
@@ -58,12 +58,12 @@ If the data you wanted to pass down to this view was completely static, you don'
   // ...
 ```
 
-On the other hand, in the more likely scenario that this data is dynamic, we'd need to use a controller action to load it from our models, then pass it to the view using the [res.view()](http://sailsjs.com/documentation/reference/res/res.view.html) method.
+С другой стороны, в более вероятном сценарии, эти данные являются динамическими, нам нужно будет использовать действие контроллера, чтобы загрузить данные из наших моделей, и затем передать их во view используя метод [res.view()](http://sailsjs.com/documentation/reference/res/res.view.html).
 
-Assuming we hooked up our route to one of our controller's actions (and our models were set up), we might send down our view like this:
+Предполагая, что мы подключили наш маршрут к одному из действий нашего контроллера (и наши модели были настроены), мы могли бы отправить наш view таким образом:
 
 ```javascript
-// in api/controllers/UserController.js...
+// в api/controllers/UserController.js...
 
   profile: function (req, res) {
     // ...
@@ -75,9 +75,9 @@ Assuming we hooked up our route to one of our controller's actions (and our mode
   // ...
 ```
 
-### Escaping untrusted data using `exposeLocalsToBrowser`
+### Экранирование ненадежных данных используя `exposeLocalsToBrowser`
 
-It is often desirable to &ldquo;bootstrap&rdquo; data onto a page so that it&rsquo;s available via Javascript as soon as the page loads, instead of having to fetch the data in a separate AJAX or socket request.  Sites like [Twitter and GitHub](https://blog.twitter.com/2012/improving-performance-on-twittercom) rely heavily on this approach in order to optimize page load times and provide an improved user experience.
+Часто желательно чтобы данные &ldquo;bootstrap&rdquo; на страницу, чтобы it&rsquo;s available via Javascript as soon as the page loads, instead of having to fetch the data in a separate AJAX or socket request.  Sites like [Twitter and GitHub](https://blog.twitter.com/2012/improving-performance-on-twittercom) rely heavily on this approach in order to optimize page load times and provide an improved user experience.
 
 In the past, a common way of solving this problem was with hidden form fields, or by hand-rolling code that injects server-side locals directly into a client-side script tag.  However, these techniques can present a challenge when some of the data you want to bootstrap is from an _untrusted_ source, meaning that it might contain HTML tags and Javascript code meant to compromise your app with an <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attack</a>.  To help prevent such issues, Sails provides a helper function called `exposeLocalsToBrowser` that you can use in your views to output data safely.
 
@@ -87,7 +87,7 @@ To use `exposeLocalsToBrowser`, simply call it from within your view using the _
 <%- exposeLocalsToBrowser() %>
 ```
 
-By default, this exposes _all_ of your view locals as the `window.SAILS_LOCALS` global variable.  For example, if your action code contained:
+По умолчанию, это представит _все_ locals ваших view как глобальные переменные `window.SAILS_LOCALS`.  Например, если код вашего action содержит:
 
 ```javascript
 res.view('myView', {
@@ -96,13 +96,13 @@ res.view('myView', {
   someObject: { owl: 'hoot' },
   someArray: [1, 'boot', true],
   someBool: false
-  someXSS: '<script>alert("all your credit cards is belongs to us");</script>'
+  someXSS: '<script>alert("все ваши кредитные карты принадлежат нам");</script>'
 });
 ```
 
-then using `exposeLocalsToBrowser` as shown above would cause the locals to be safely bootstrapped in such a way that `window.SAILS_LOCALS.someArray` would contain the array `[1, 'boot', true]`, and  `window.SAILS_LOCALS.someXSS` would contain the _string_ `<script>alert("all your credit cards is belongs to us");</script>`, without causing that code to actually be executed on the page.
+то используя `exposeLocalsToBrowser` как показано выше, приведет к тому что locals будут безопасно загружаться таким образомthat `window.SAILS_LOCALS.someArray` будет содержать массив `[1, 'boot', true]`, и  `window.SAILS_LOCALS.someXSS` будет содержать массив _string_ `<script>alert("все ваши кредитные карты принадлежат нам");</script>`, не заставляя этот код фактически выполняться на странице.
 
-The `exposeLocalsToBrowser` function has a single `options` parameter that can be used to configure what data is outputted, and how.  The `options` parameter is a dictionary that can contain the following properties:
+Функция `exposeLocalsToBrowser` имеет единственный параметр `options` parameter который можно использовать для настройки вывода данных, and how.  Параметр `options` это словарь содержащий следующие свойства:
 
 |&nbsp;   |     Property        | Type                                         | Default| Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|-----|
