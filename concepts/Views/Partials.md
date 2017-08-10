@@ -1,8 +1,8 @@
 # Partials
 
-When using the default view engine (`ejs`), Sails supports the use of _partials_ (aka "view partials").  Partials are basically just views that are designed to be used from within other views.
+При сипользовании стандартного view engine (`ejs`), Sails поддерживает использование _partials_ (или "view partials").  Partials в основном просто views разработанные чтобы быть использованными с другими views.
 
-They are particularly useful for reusing the same markup between different views, layouts, and even other partials.
+Они особенно полезны для повторного использования одинаковой разметки между различными views, layouts, и даже другими partials.
 
 ```ejs
 <%- partial('./partials/navbar.ejs') %>
@@ -34,9 +34,9 @@ The target path that you pass in as the first argument to `partial()` should be 
 <%- partial('../../partials/navbar.ejs') %>
 ```
 
-### Partials and view locals
+### Partials и view locals
 
-Partials automatically inherit the view locals that are available wherever they are used.  For example, if you call `partial()` within a view where a variable named `currentUser` is available, then `currentUser` will also be available within the partial:
+Partials автоматически наследуют view locals которые доступны везде, где они используются.  Например, если вы вызовите `partial()` с view в котором есть переменная `currentUser` то `currentUser`будет доступени в partial:
 
 ```ejs
 <%
@@ -73,13 +73,13 @@ Partials automatically inherit the view locals that are available wherever they 
 ```
 
 
-### Overriding locals in a partial
+### Overriding locals в partial
 
-Automatic inheritance of view locals takes care of most use cases for partials.  But sometimes, you might want to pass in additional, dynamic data.  For example, imagine your app has duplicate copies of the following code in a few different views:
+Автоматическое наследование view locals заботится о большинстве случаев использования для partials.  Но иногда, вы можете захотеть передать дополнительные динамические данные. На пример, Представьте себе, что ваше приложение имеет дубликаты копий следующего кода в несколько разных views:
 
 ```ejs
 <%
-// A list representing the currently-logged in user's inbox.
+// Список всех currently-logged in user's inbox.
 %><ul class="message-list"><%
   // Display each message, with a button to delete it.
   _.each(messages, function (message) {
