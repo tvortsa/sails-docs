@@ -1,6 +1,6 @@
 # Partials
 
-При сипользовании стандартного view engine (`ejs`), Sails поддерживает использование _partials_ (или "view partials").  Partials в основном просто views разработанные чтобы быть использованными с другими views.
+При использовании стандартного view engine (`ejs`), Sails поддерживает использование _partials_ (или "view partials").  Partials в основном просто views разработанные чтобы быть использованными с другими views.
 
 Они особенно полезны для повторного использования одинаковой разметки между различными views, layouts, и даже другими partials.
 
@@ -8,15 +8,16 @@
 <%- partial('./partials/navbar.ejs') %>
 ```
 
-Depending on where this  render the partial located at `views/partials/navbar.ejs`, which might look something like this:
+В зависимости от того, где рендерится partial располагается в `views/partials/navbar.ejs`, Который может выглядеть примерно так:
 
 ```ejs
 <%
 /**
  * views/partials/navbar.ejs
  *
- * > Note: This EJS comment won't show up in the ejs served to the browser.
- * > So you can be as verbose as you like.  Just be careful not to inadvertently
+ * > Note: Этот EJS комментарий не появится в ejs обслуживаемом браузером.
+ * > Таким образом, вы можете быть настолько подробным, насколько вам нравится.  
+ * > Просто будьте осторожны not to inadvertently
  * > type a percent sign followed by a greater-than sign (it'll bust you out of
  * > the EJS block).
  *
@@ -28,7 +29,7 @@ Depending on where this  render the partial located at `views/partials/navbar.ej
 ```
 
 
-The target path that you pass in as the first argument to `partial()` should be relative from the view, layout, or partial where you call it.  So if you are calling `partial()` from within a view file located at `views/pages/dashboard/user-profile.ejs`, and want to load `views/partials/widget.ejs` then you would use:
+Целевой путь, который вы передаете как первый аргумент в `partial()` должен быть относительно того view, layout, или partial в котором вы его вызываете.  So if you are calling `partial()` from within a view file located at `views/pages/dashboard/user-profile.ejs`, and want to load `views/partials/widget.ejs` then you would use:
 
 ```ejs
 <%- partial('../../partials/navbar.ejs') %>
