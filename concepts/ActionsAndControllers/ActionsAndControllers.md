@@ -1,10 +1,10 @@
-# Actions and controllers
+# Actions и controllers
 
-### Overview
+### Обзор
 
-_Actions_ are the principal objects in your Sails application that are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](http://sailsjs.com/documentation/concepts/ORM/Models.html) and [views](http://sailsjs.com/documentation/concepts/Views). For many applications, the actions will contain the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic).
+_Actions_ это лавные объекты в вашем Sails приложении которые которые отвечают за реакцию на *запросы* от web браузера, мобильного приложения или любой другой системы способной взаимодействовать с сервером.  Они часто выполняют ролдь посредников между вашими [моделями](http://sailsjs.com/documentation/concepts/ORM/Models.html) и [views](http://sailsjs.com/documentation/concepts/Views). Для большинства приложений, actions будут содержать основную часть &rsquo;s [бизнес-логики](http://en.wikipedia.org/wiki/Business_logic) вашего проекта.
 
-Actions are bound to [routes](http://sailsjs.com/documentation/concepts/Routes) in your application, so that when a client requests the route, the action is executed to perform some business logic and send a response.  For example, the `GET /hello` route in your application could be bound to an action like:
+Actions связаны с [routes](http://sailsjs.com/documentation/concepts/Routes) в вашем приложении, так что когда клиент запрашивает маршрут, action выполняется для осуществления некоторой бизнес-логики и отправки ответа.  Например, `GET /hello` route в вашем приложении может быть связано с действием вроде:
 
 ```javascript
 function (req, res) {
@@ -12,45 +12,45 @@ function (req, res) {
 }
 ```
 
-Any time a web browser is pointed to the `/hello` URL on your app's server, the page will display the message: &ldquo;Hi there!&rdquo;.
+Каждый раз, когда веб-браузер указывает на `/hello` URL вашего сервера приложений, отображается страница с: &ldquo;Hi there!&rdquo;.
 
-### Where are actions defined?
-Actions are defined in the `api/controllers/` folder and subfolders (we&rsquo;ll talk more about _controllers_ in a bit). In order for a file to be recognized as an action, it must be _kebab-cased_ (containing only lowercase letters, numbers and dashes).  When referring to an action in Sails (for example, when [binding it to a route](http://sailsjs.com/documentation/concepts/routes/custom-routes#?action-target-syntax)), use its path relative to `api/controllers`, without any file extension.  For example, the `api/controllers/user/find.js` file represents an action with the identity `user/find`.
+### Где объявлять actions?
+Actions объявляют в папке `api/controllers/` и подпапках (мы скоро поговорим о _controllers_ ). Чтобы файл был распознан как action, он должен быть _kebab-cased_ (содержать только символы нижнего регистра, числа и дефисы).  Ссылаясь на action в Sails (например, когда [связываем его с route](http://sailsjs.com/documentation/concepts/routes/custom-routes#?action-target-syntax)), спользуйте его путь относительно `api/controllers`, без расширения в имени файла.  Например, файл `api/controllers/user/find.js` представляет собой действие с идентификатором `user/find`.
 
-##### File extensions for actions
+##### Расширения файлов для actions
 
-An action can have any file extension besides `.md` (Markdown) and `.txt` (text).  By default, Sails only knows how to interpret `.js` files, but you can customize your app to use things like [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) or [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) as well.
+Action могут иметь любые расширения кроме `.md` (Markdown) and `.txt` (text).  По умолчанию, Sails знает только, как интерпретировать `.js` файлы, но вы можете кастомизировать это для использования например [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) или [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script).
 
-### What does an action file look like?
+### Как выглядит файл action?
 
-Action files can use one of two formats: _classic_ or _Actions2_.
+Файлы действий могут использовать один из двух форматов: _classic_ или _Actions2_.
 
 ##### Classic actions
 
-The quickest way to get started creating a Sails action is to declare it as a function.  When a client requests a route that is bound to that action, the function will be called using the [request object](http://sailsjs.com/documentation/reference/request-req) as the first argument (typically named `req`), and the [response object](http://sailsjs.com/documentation/reference/response-res) as the second argument (typically named `res`).  Here's a sample action function that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
+Самый быстрый способ начать создание Sails action заключается в объявлении его как функции.  Когда клиент запрашивает маршрут, привязанный к этому действию, функция будет вызываться с использованием [request object](http://sailsjs.com/documentation/reference/request-req) в качестве персвого аргумента (обычно его называют именем `req`), и [response object](http://sailsjs.com/documentation/reference/response-res) как второй аргумент (обычно имя `res`).  Вот пример действия функции, которая ищет пользователя по ID, и либо отображает view «приветствия», либо перенаправляет на страницу регистрации, если пользователь не может быть найден:
 
 ```javascript
 module.exports = function welcomeUser (req, res) {
 
-   // Get the `userId` parameter from the request.
-   // This could have been set on the querystring, in
-   // the request body, or as part of the URL used to
+   // Получаем параметр `userId` из запроса.
+   // Это можно было бы задать в строке запроса, в
+   // теле запроса, или как часть URL used to
    // make the request.
    var userId = req.param('userId');
 
-   // If no `userId` was specified, or it wasn't a number, return an error.
+   // Если не задано `userId`, или это не было число, верните ошибку.
    if (!_.isNumeric(userId)) {
-      return res.badRequest(new Error('No user ID specified!'));
+      return res.badRequest(new Error('ID пользователя не указан!'));
    }
 
-   // Look up the user whose ID was specified in the request.
+   // Ищем пользователя, чей идентификатор был указан в запросе.
    User.findOne(userId).exec(function (err, user) {
-      // Handle unknown errors.
+      // Обработка неизвестных ошибок.
       if (err) {return res.serverError(err);}
-      // If no user was found, redirect to signup.
+      // Если пользователь не найден, перенаправляем на signup.
       if (!user) {return res.redirect('/signup');
-      // Display the welcome view, setting the view variable
-      // named "name" to the value of the user's name.
+      // Отображаем view приветствия, задавая переменную view
+      // с именем "name" в значение имени пользователя.
       return res.view('welcome', {name: user.name});
    });
 
