@@ -34,8 +34,8 @@ module.exports = function welcomeUser (req, res) {
 
    // Получаем параметр `userId` из запроса.
    // Это можно было бы задать в строке запроса, в
-   // теле запроса, или как часть URL used to
-   // make the request.
+   // теле запроса, или как часть URL испльзуемого
+   // для создания запроса.
    var userId = req.param('userId');
 
    // Если не задано `userId`, или это не было число, верните ошибку.
@@ -59,14 +59,14 @@ module.exports = function welcomeUser (req, res) {
 
 ##### Actions2
 
-Another, more structured way to create an action is by writing it as a _machine_, in much the same way that Sails [helpers](http://sailsjs.com/documentation/concepts/helpers) are created.  By defining your action as a machine, it is essentially self-documenting and self-validating.  Here's the same actions as above, rewritten using the machine format:
+Другой, более структурированный способ создания action это написание _machine_, создается почти так же, как Sails [helpers](http://sailsjs.com/documentation/concepts/helpers).  Определив свой action как machine, это, по сути, самодокументирование и самотестирование.  Вот то же действие, что и выше, переписанное с использованием машинного формата:
 
 ```javascript
 module.exports = {
 
-   friendlyName: 'Welcome user',
+   friendlyName: 'Добро пожаловать',
 
-   description: 'Look up the specified user and welcome them, or redirect to a signup page if no user was found.',
+   description: 'Ищем указанного пользователя и приветствуем его, или перенаправляем на страницу входа если пользователь не найден.',
 
    inputs: {
       userId: {
@@ -112,7 +112,7 @@ module.exports = {
 };
 ```
 
-Sails uses the [machine-as-action](https://github.com/treelinehq/machine-as-action) module to automatically create route-handling functions out of machines like the example above.  See the [machine-as-action docs](https://github.com/treelinehq/machine-as-action#customizing-the-response) for more information.
+Sails использует модуль [machine-as-action](https://github.com/treelinehq/machine-as-action) для автоматического создания функций обработки маршрутов out of machines like the example above.  See the [machine-as-action docs](https://github.com/treelinehq/machine-as-action#customizing-the-response) for more information.
 
 > Note that machine-as-action provides actions with access to the [request object](http://sailsjs.com/documentation/reference/request-req) as `env.req`, and to the Sails application object (in case you don&rsquo;t have [globals](http://sailsjs.com/documentation/concepts/globals) turned on) as `env.sails`.
 
@@ -124,9 +124,9 @@ Using classic `req, res` functions for your actions is the quickest way to start
 
 In a nutshell, your code will be standardized in a way that makes it easier to re-use and modify later.
 
-### Controllers
+### Контроллеры
 
-The quickest way to get started writing Sails apps is to organize your actions into _controller files_.  A controller file is a [_PascalCased_](https://en.wikipedia.org/wiki/PascalCase) file whose name must end in `Controller`, containing a dictionary of actions.  For example, a  "User controller" could be created at `api/controllers/UserController.js` file containing:
+ Самый быстрый способ начать писать приложение Sails это организовать ваши actions в _файле контроллера_.  Это [_PascalCased_](https://en.wikipedia.org/wiki/PascalCase) файл имя которого должно заканчиваться на `Controller`, содержащий словарь actions.  Например, "User controller" может быть создан как файл `api/controllers/UserController.js` содержащий:
 
 ```javascript
 module.exports = {
@@ -136,11 +136,11 @@ module.exports = {
 };
 ```
 
-You can use [`sails generate controller`](http://sailsjs.com/documentation/reference/command-line-interface/sails-generate#?sails-generate-controller-foo-action-1-action-2) to quickly create a controller file.
+Вы можете использовать [`sails generate controller`](http://sailsjs.com/documentation/reference/command-line-interface/sails-generate#?sails-generate-controller-foo-action-1-action-2) для быстрого создания файла контроллера.
 
-##### File extensions for controllers
+##### Расширение имени файлов контроллеров
 
-A controller can have any file extension besides `.md` (Markdown) and `.txt` (text).  By default, Sails only knows how to interpret `.js` files, but you can customize your app to use things like [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) or [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) as well.
+Контроллер может иметь любое расширение кроме `.md` (Markdown) and `.txt` (text).  По умолчанию, Sails знает только как интерпретировать `.js` файлы, but you can customize your app to use things like [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) or [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) as well.
 
 
 ### Standalone actions
