@@ -1,10 +1,10 @@
-# Models
+# Модели
 
-A model represents a set of structured data, called records.  Models usually correspond to a table/collection in a database, attributes correspond to columns/fields, and records correspond to rows/documents.
+Модель представляет набор структурированных данных, называемых записями (records).  Модели обычно соответствуют таблицам/коллекциям в БД, атрибуты соответствуют столбцам/полям, а записи (records) соответствуют строкам/документам.
 
-### Defining models
+### Объявление моделей
 
-By convention, models are defined by creating a file in a Sails app's `api/models/` folder:
+По соглашению, модели объявляются созданием файлов в папке `api/models/` приложения Sails :
 
 ```javascript
 // api/models/Product.js
@@ -18,7 +18,7 @@ module.exports = {
 };
 ```
 
-For a complete walkthrough of available options when setting up a model definition, see [Model Settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings), [Attributes](http://sailsjs.com/documentation/concepts/models-and-orm/attributes), and [Associations](http://sailsjs.com/documentation/concepts/models-and-orm/associations).
+Для полного ознакомления с доступными параметрами при настройке определения модели, см. [Model Settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings), [Attributes](http://sailsjs.com/documentation/concepts/models-and-orm/attributes), and [Associations](http://sailsjs.com/documentation/concepts/models-and-orm/associations).
 
 <!--
 commented-out content at: https://gist.github.com/rachaelshaw/1d7a989f6685f11134de3a5c47b2ebb8#1
@@ -29,30 +29,30 @@ commented-out content at: https://gist.github.com/rachaelshaw/1d7a989f6685f11134
 
 
 
-### Using models
+### Использование модели
 
-Once a Sails app is running, its models may be accessed from within controller actions, helpers, tests, and just about anywhere else you normally write code.  This lets your code call model methods to communicate with your database (or even with multiple databases).
+Когда Sails приложение запускается, его модели становятся доступны из его controller actions, helpers, tests, и just about anywhere else you normally write code.  Это позволяет вашему коду вызывать методы модели для взаимодействия с вашей БД (или даже с несколькими БД).
 
-There are many built-in methods available on models, the most important of which are the query methods like [.find()](http://sailsjs.com/documentation/reference/waterline/models/find) and [.create()](http://sailsjs.com/documentation/reference/waterline/models/create).  You can find detailed usage documentation for methods like these in [Reference > Waterline (ORM) > Models](http://sailsjs.com/documentation/reference/waterline-orm/models).
+На моделях доступно множество встроенных методов, наиболее важными из которых являются методы запросов, такие как [.find()](http://sailsjs.com/documentation/reference/waterline/models/find) и [.create()](http://sailsjs.com/documentation/reference/waterline/models/create).  Вы можете найти подробную документацию по использованию таких методов в [Reference > Waterline (ORM) > Models](http://sailsjs.com/documentation/reference/waterline-orm/models).
 
 
-### Query methods
+### Методы запросов
 
-Every model in Waterline will have a set of query methods exposed on it to allow you to interact with the database in a normalized fashion. These are known as the CRUD (Create-Read-Update-Delete) methods and is the primary way of interacting with your data.
+Каждая модель в Waterline удет иметь набор методов запросов, открытых на нем, чтобы вы могли взаимодействовать с базой данных нормальным образом. Что известно как CRUD (Create-Read-Update-Delete) методы и это основной способ управления вашими данными.
 
-Since they have to send a query to the database and wait for a response, query methods are **asynchronous functions**.  That is, they don't come back with an answer right away.  Like other asynchronous functions in JavaScript (`setTimeout()` for example), that means we need some other way of determining when they've finished executing, whether they were successful, and if not, what kind of error (or other exceptional circumstance) occurred.
+Поскольку они должны отправлять запрос в базу данных и ждать ответа, методы запросов являются **асинхронными функциями**.  То есть, они не возвращаются с ответом сразу.  Как и другие асинхронные функции в JavaScript (`setTimeout()` например), Это означает, что нам нужен другой способ определения, когда они закончили выполнение, были ли они успешными, и если нет какая ошибка (или других исключительных обстоятельств) произошла.
 
-In Node.js, Sails, and JavaScript in general, the classic way to support this paradigm is by using _callbacks_.
+В Node.js, Sails, и JavaScript обычно, классическим способом поддержки этой парадигмы является использование _callbacks_.
 
 ##### Callbacks
 
-For convenience, built-in model methods return a _deferred object_ known as a "query":
+По соглашению, встроенные в модели методы возвращают _отсроченный(deferred) объект_ называемый "query":
 
 ```javascript
 var query = User.findOne({ name: 'Rose' });
 ```
 
-After running [the code above](https://gist.github.com/mikermcneil/c6a033d56497e9930a363a2949284fd3), our app has not _actually_ talked to the database yet.  To actually execute a query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete:
+После запуска [кода выше](https://gist.github.com/mikermcneil/c6a033d56497e9930a363a2949284fd3), наше приложение _на самом деле_ еще не общается с БД.  Чтобы действительно выполнить запрос, нужно вызвать `.exec(cb)` на этом deferred object, где `cb` это коллбэк-функция запускаемая после успешного завершения запроса:
 
 ```javascript
 query.exec(function (err, rose) {
@@ -62,12 +62,12 @@ query.exec(function (err, rose) {
 });
 ```
 
-> In addition to `.exec()`, many Sails apps benefit from using the [async](https://www.npmjs.com/package/async) library.  In fact, to facilitate this, Sails provides an [easy way](http://sailsjs.com/documentation/reference/configuration/sails-config-globals) to access `async` throughout your app.
+> В дополнение к `.exec()`, многим приложениям Sails выгодно использовать библиотеку [async](https://www.npmjs.com/package/async).  Фактически, для облегчения этого, Sails предоставляет [простой способ](http://sailsjs.com/documentation/reference/configuration/sails-config-globals) доступа к `async` во всем приложении.
 
 
 ##### Promises
 
-As an alternative to callbacks, Waterline also includes opt-in support for promises.  Instead of calling `.exec()` on a query, you can choose to call `.then()`, `.spread()`, or `.catch()`, which will begin executing the query and return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
+Как альтернатива коллбэкам, Waterline также включает опциональную поддержку promises.  Вместо вызова `.exec()` на запросе, вы можете выбрать вызов `.then()`, `.spread()`, или `.catch()`, which will begin executing the query and return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
 
 > If you are not already an avid user of promises, don't worry-- [just stick with `.exec()`](https://github.com/balderdashy/sails/issues/3459#issuecomment-171039631).  The decision of whether to use callbacks or promises is a question of style, so don't feel pressured one way or the other.
 
