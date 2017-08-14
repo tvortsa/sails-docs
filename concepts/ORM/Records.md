@@ -1,6 +1,6 @@
-# Records
+# Записи
 
-A _record_ is what you get back from `.find()` or `.findOne()`.  Each record is a uniquely identifiable object that corresponds 1-to-1 with a physical database entry; e.g. a row in Oracle/MSSQL/PostgreSQL/MySQL, a document in MongoDB, or a hash in Redis.
+Записи - _record_ это то, что вы получаете в ответ от `.find()` или `.findOne()`.  Каждая запись это уникально идентифицируемый объект который 1-к-1 соответствует записи в физической БД; т.е. строке в Oracle/MSSQL/PostgreSQL/MySQL, документу в MongoDB, или hash в Redis.
 
 ```js
 Order.find().exec(function (err, records){
@@ -21,23 +21,23 @@ Order.find().exec(function (err, records){
 
 
 
-### JSON serialization
+### JSON сериализация
 
-In Sails, records are just dictionaries (plain JavaScript objects), which means they can easily be represented as JSON. But you can also customize the way that records from a particular model are _stringified_ using the [`customToJSON` model setting](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson).
+В Sails, записи это просто словари (plain JavaScript объекты), что означает, что они могут быть легко представлены как JSON. Но вы также можете настроить способ записи записей из определенной модели _stringified_ используя [`customToJSON` model setting](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson).
 
 
 ### Populated values
 
-In addition to basic attribute data like email addresses, phone numbers, and birthdates, Waterline can dynamically store and retrieve linked sets of records using [associations](http://sailsjs.com/documentation/concepts/models-and-orm/associations).  When [`.populate()`](http://sailsjs.com/documentation/reference/waterline-orm/queries/populate) is called on a query, each of the resulting records will contain one or more populated values.  Each one of those populated values is a snapshot of the record (or array of records) linked to that particular association at the time of the query.
+Помимо основных данных атрибутов, таких как адреса электронной почты, телефонного номера, и даты рождения, Waterline может динамически хранить и извлекать связанные наборы записей [associations](http://sailsjs.com/documentation/concepts/models-and-orm/associations).  Где [`.populate()`](http://sailsjs.com/documentation/reference/waterline-orm/queries/populate) is called on a query, each of the resulting Записи будут содержать одно или несколько заполненных значений.  Каждое из этих заполненных значений представляет собой снимок записи (или массива записей) связанные с этой конкретной ассоциацией на момент запроса.
 
-The type of a populated value depends on what kind of association it is:
+Тип заполняемого значения зависит от того, какая ассоциация:
 
-+ `null`, or a plain JavaScript object,  _(if it corresponds to a "model" association)_ or
-+ an empty array, or an array of plain JavaScript objects _(if it corresponds to a "collection" association)_
++ `null`, или plain JavaScript объект,  _(если это соответствует "model" association)_ или
++ пустой массив, или массив plain JavaScript объектов _(если это соответствует ассоциации "collection")_
 
 
 
-For example, assuming we're dealing with orders of adorable wolf puppies:
+Например, предположим, что мы имеем дело с заказами очаровательных щенков-волков:
 
 ```js
 Order.find()
@@ -45,11 +45,11 @@ Order.find()
 .populate('seller')  // a "model" association
 .exec(function (err, orders){
 
-  // this array is a snapshot of the Customers who are associated with the first Order as "buyers"
+  // этот массив это слепок Customers которые ассоциированы с первым Order как "buyers"
   orders[0].buyers;
   // => [ {id: 1, name: 'Robb Stark'}, {id: 6, name: 'Arya Stark'} ]
 
-  // this object is a snapshot of the Company that is associated with the first Order as the "seller"
+  // этот объект это слепок Company которая ассоциирована с первым Order как "seller"
   orders[0].seller;
   // => { id: 42941, corporateName: 'WolvesRUs Inc.' }
 
