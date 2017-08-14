@@ -1,18 +1,18 @@
-# Routing to actions
+# Маршрутинг на actions
 
-### Manual routing
+### Ручной роутинг
 
-By default, controller actions in your Sails app will be inaccessible to users until you _bind_ them to a route in your [`config/routes.js` file](http://sailsjs.com/documentation/reference/configuration/sails-config-routes).  When you bind a route, you specify a URL that users can access the action at, along with options like [CORS security settings](http://sailsjs.com/documentation/concepts/security/cors#?configuring-cors-for-individual-routes).
+По умолчанию, controller actions в вашем приложении Sails недоступны для пользователей пока вы не _свяжете_ его с маршрутом в вашем [`config/routes.js` файле](http://sailsjs.com/documentation/reference/configuration/sails-config-routes).  Когда вы связываете маршрут, то укажите URL через который пользователь может получить доступ к action, а также опции типа [CORS security settings](http://sailsjs.com/documentation/concepts/security/cors#?configuring-cors-for-individual-routes).
 
-To bind a route to an action in the `config/routes.js` file, you can use the HTTP verb and path (i.e. the **route address**) as the key, and the action identity as the value (i.e. the **route target**).
+Чтобы связать маршрут с действием в файле `config/routes.js`, можете использовать HTTP verb и path (i.e. the **route address**) как ключ, а объявление action identity как значение (i.e. the **route target**).
 
-For example, the following manual route will cause your app to trigger the `makeIt` action in `api/controllers/SandwichController.js` whenever it receives a POST request to `/make/a/sandwich`:
+Например, следующий ручной маршрут заставит ваше приложение запускать action `makeIt`  в `api/controllers/SandwichController.js` всякий раз при получении POST запроса `/make/a/sandwich`:
 
 ```js
   'POST /make/a/sandwich': 'SandwichController.make'
 ```
 
-If you&rsquo;re using standalone actions, so that you had an `api/controllers/sandwich/make.js` file, a more intuitive syntax exists which uses the path to the action (relative to `api/controllers`):
+Если вы используете standalone actions, so that you had an `api/controllers/sandwich/make.js` file, a more intuitive syntax exists which uses the path to the action (relative to `api/controllers`):
 
 ```js
   'POST /make/a/sandwich': 'sandwich/make'
