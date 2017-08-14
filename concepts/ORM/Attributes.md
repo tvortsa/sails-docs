@@ -1,7 +1,7 @@
-# Attributes
-### Overview
+# Аттрибуты
+### Обзор
 
-Model attributes are basic pieces of information about a model.  For example, a model called `Person` might have attributes named `firstName`, `lastName`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
+Model attributes являются основными сведениями о модели.  Например, модель `Person` может иметь атрибуты с именами `firstName`, `lastName`, `phoneNumber`, `age`, `birthDate` и `emailAddress`.
 
 <!---
 FUTURE: address sql vs. no sql and stuff like:
@@ -12,9 +12,9 @@ In most cases, this data is _homogenous_, meaning each record has the same attri
 
 
 
-### Defining attributes
+### Определение атрибутов
 
-A model's `attributes` [setting](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings) allows you to provide a set of attributes, each defined as a dictionary (aka plain JavaScript object):
+В модели `attributes` [setting](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings) озволяет вам предоставить набор атрибутов, каждый из которых определяется как словарь (plain JavaScript объект):
 
 ```javascript
 // api/models/User.js
@@ -53,9 +53,9 @@ module.exports = {
 
 ##### Type
 
-Except for [associations](http://sailsjs.com/documentation/concepts/models-and-orm/associations), every attribute must declare a `type`.
+За исключением [associations](http://sailsjs.com/documentation/concepts/models-and-orm/associations), каждый атрибут должен объявлять `type`.
 
-This is the type of data that will be stored for this attribute -- used for logical type safety checks of queries and results.  Here is a list of the data types supported by Sails and Waterline:
+Это тип данных который бкдет храниться в этом атрибуте -- для проверки безопасности запросов и результатов логического типа.  Ниже приведен список типов данных, поддерживаемых в Sails и Waterline:
 
 - string
 - number
@@ -67,14 +67,14 @@ This is the type of data that will be stored for this attribute -- used for logi
 
 ##### Required
 
-If an attribute is `required: true`, then a value must always be specified for it when calling `.create()`.  It also prevents explicitly trying to create (or update) this value as `null` or empty string (""),
+Если атрибут `required: true`, то при вызове всегда необходимо указать значение `.create()`.  Это также препятствует явным попыткам создания (или update) этого занчения как `null` или пустая строка (""),
 
 
 ##### Default values
 
-In addition to the five data types, there are also a couple of other basic guarantees that you can define for an attribute, including the ability to ensure a default value.
+В дополнение к пяти типам данных, есть также несколько других основных гарантий, которые вы можете определить для атрибута, включая возможность обеспечения значения по умолчанию.
 
-The default value (`defaultsTo`) for an attribute only applies on `.create()`, and only when the key is omitted entirely.
+Значения по умолчанию (`defaultsTo`) поскольку атрибут применяется только к `.create()`, и только когда ключ получен полностью.
 
 
 ```javascript
@@ -88,7 +88,7 @@ attributes: {
 
 ##### Allow Null
 
-The `string`, `number` and `boolean` data types do _not_ accept `null` as a value when creating or updating records.  In order to allow setting a `null` value you can toggle the `allowNull` flag on the attribute. The `allowNull` flag is only valid on these data types however. It is _not_ valid on attributes with types `json` or `ref`, any associations, or any primary key attributes.
+Типы данных `string`, `number` и `boolean`  _НЕ_ принимают `null` как значение при создании или обновлении записей.  In order to allow setting a `null` value you can toggle the `allowNull` flag on the attribute. The `allowNull` flag is only valid on these data types however. It is _not_ valid on attributes with types `json` or `ref`, any associations, or any primary key attributes.
 
 
 ```javascript
@@ -266,7 +266,7 @@ attributes: {
 
 ##### unique
 
-Ensures no two records will be allowed with the same value for the target attribute. This is an adapter-level constraint, so in most cases this will result in a unique index on the attribute being created in the underlying datastore.
+Обеспечивает отсутствие двух записей с одинаковым значением для целевого атрибута. This is an adapter-level constraint, so in most cases this will result in a unique index on the attribute being created in the underlying datastore.
 
 ```javascript
 attributes: {
