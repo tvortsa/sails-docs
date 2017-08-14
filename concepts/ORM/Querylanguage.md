@@ -1,14 +1,13 @@
-# Waterline query language
+# язык запросов Waterline
 
-The Waterline Query language is an object-based syntax used to retrieve the records from any supported database.  Under the covers, Waterline uses the database adapter(s) installed in your project to translates this language into native queries, and then to send those queries to the appropriate database.  This means that you can use the same query with MySQL as you do with Redis, or MongoDb. And it allows you to change your database with minimal (if any) changes to your application code.
+Язык запросов Waterline это объектно-ориентированный синтаксис использующийся дял извлечения записей из любой, поддерживаемой БД. Внутри, Waterline использует database adapter(s) установленные в ваш проект для перевода этого языка в нативные запросы, и последующей отправки этих запросов в соответствующую БД.  Это означает, что вы можете использовать те-же запросы и в MySQL и в Redis, или MongoDb. И это позволяет вам изменять свою базу данных с минимальными (if any) изменениями кода приложения.
 
 
-### Query Language Basics
+### Основы языка запросов
 
-The criteria objects are formed using one of four types of object keys. These are the top level
-keys used in a query object. It is loosely based on the criteria used in MongoDB with a few slight variations.
+Объекты критериев формируются с использованием одного из четырех типов объектных ключей. Это верхний уровень ключи, используемые в объекте запроса. Они основаны на критериях, используемых в MongoDB, с небольшими вариациями.
 
-Queries can be built using either a `where` key to specify attributes, which will allow you to also use query options such as `limit` and `skip` or, if `where` is excluded, the entire object will be treated as a `where` criteria.
+Queries могут быть построены с использованием ключевого слова `where` и указания атрибутов, который позволит вам также использовать параметры запроса, такие как `limit` и `skip` или, если `where` исключен, весь объект будет рассматриваться как `where` критерий.
 
 ```javascript
 
@@ -19,7 +18,7 @@ Model.find({
 });
 
 
-// OR
+// или
 
 
 Model.find({
@@ -32,9 +31,9 @@ Model.find({
 });
 ```
 
-#### Key Pairs
+#### Пары ключей
 
-A key pair can be used to search records for values matching exactly what is specified. This is the base of a criteria object where the key represents an attribute on a model and the value is a strict equality check of the records for matching values.
+Пара ключей может использоваться для поиска записей для значений, соответствующих точно указанному. Это база объекта критериев, где ключ представляет собой атрибут модели, а значение представляет собой строгую проверку соответствия записей для сопоставления значений.
 
 ```javascript
 Model.find({
@@ -44,7 +43,7 @@ Model.find({
 });
 ```
 
-They can be used together to search multiple attributes.
+Они могут использоваться вместе для поиска нескольких атрибутов.
 
 ```javascript
 Model.find({
@@ -55,7 +54,7 @@ Model.find({
 });
 ```
 
-#### Complex Constaints
+#### Complex Constraints
 
 Complex constraints also have model attributes for keys but they also use any of the supported criteria modifiers to perform queries where a strict equality check wouldn't work.
 
@@ -67,7 +66,7 @@ Model.find({
 })
 ```
 
-#### In Modifier
+#### модификатор In
 
 Provide an array to find records whose value for this attribute exactly matches _any_ of the specified search terms.
 
@@ -81,7 +80,7 @@ Model.find({
 });
 ```
 
-#### Not-In Modifier
+#### модификатор Not-In
 
 Provide an array wrapped in a dictionary under a `!` key (like `{ '!': [...] }`) to find records whose value for this attribute _ARE NOT_ exact matches for any of the specified search terms.
 
@@ -95,7 +94,7 @@ Model.find({
 });
 ```
 
-#### Or Predicate
+#### предикат Or 
 
 Use the `or` modifier to match _any_ of the nested rulesets you specify as an array of query pairs.  For records to match an `or` query, they must match at least one of the specified query modifiers in the `or` array.
 
