@@ -2,7 +2,7 @@
 
 ### Обзор
 
-_Actions_ это главные объекты в вашем Sails приложении которые которые отвечают за реакцию на *запросы* от web браузера, мобильного приложения или любой другой системы способной взаимодействовать с сервером.  Они часто выполняют ролдь посредников между вашими [моделями](http://sailsjs.com/documentation/concepts/ORM/Models.html) и [views](http://sailsjs.com/documentation/concepts/Views). Для большинства приложений, actions будут содержать основную часть &rsquo;s [бизнес-логики](http://en.wikipedia.org/wiki/Business_logic) вашего проекта.
+_Actions_ это главные объекты в вашем Sails приложении которые отвечают за реакцию на *запросы* от web браузера, мобильного приложения или любой другой системы способной взаимодействовать с сервером.  Они часто выполняют ролдь посредников между вашими [моделями](http://sailsjs.com/documentation/concepts/ORM/Models.html) и [views](http://sailsjs.com/documentation/concepts/Views). Для большинства приложений, actions будут содержать основную часть &rsquo;s [бизнес-логики](http://en.wikipedia.org/wiki/Business_logic) вашего проекта.
 
 Actions связаны с [routes](http://sailsjs.com/documentation/concepts/Routes) в вашем приложении, так что когда клиент запрашивает маршрут, action выполняется для осуществления некоторой бизнес-логики и отправки ответа.  Например, `GET /hello` route в вашем приложении может быть связано с действием вроде:
 
