@@ -1,6 +1,6 @@
-# Model settings
+# Настройки модели
 
-In Sails, the top-level properties of model definitions are called **model settings**.  This includes everything from [attribute definitions](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?attributes), to the [database settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?datastore) the model will use, as well as a few other options.
+В Sails, свойства верхнего уровня определения модели называются **model settings**.  This includes everything from [attribute definitions](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?attributes), to the [database settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?datastore) the model will use, as well as a few other options.
 
 The majority of this page is devoted to a complete tour of the model settings supported by Sails.  But before we begin, let's look at how to actually apply these settings in a Sails app.
 
