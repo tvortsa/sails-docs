@@ -1,17 +1,17 @@
-# Generating controllers or standalone actions
+# Генерация контроллеров или standalone actions
 
-You can use [`sails-generate`](http://sailsjs.com/documentation/reference/command-line-interface/sails-generate) from the Sails command line tool to quickly generate a controller, or even just an individual action.
+Вы можете использовать [`sails-generate`](http://sailsjs.com/documentation/reference/command-line-interface/sails-generate) из командной строки Sails для быстрой генерации контроллера, или даже просто отдельного action.
 
 
-### Generating controllers
+### Генерация контроллеров
 
-For example, to generate a controller:
+Например, для генерации контроллера:
 
 ```sh
 $ sails generate controller user
 ```
 
-Sails will generate `api/controllers/UserController.js`:
+Sails сгенерирует `api/controllers/UserController.js`:
 
 ```javascript
 /**
@@ -25,16 +25,16 @@ module.exports = {
 }
 ```
 
-### Generating standalone actions
+### Генерация standalone actions
 
-Run the following command to generate a standalone action:
+Выполните следующую команду для создания standalone action:
 
 ```sh
 $ sails generate action user/signup
 info: Created a new action!
 ```
 
-Sails will create `api/controllers/user/sign-up.js`:
+Sails создаст `api/controllers/user/sign-up.js`:
 
 ```javascript
 /**
