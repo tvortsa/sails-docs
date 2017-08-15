@@ -15,7 +15,7 @@ GET /:model
 
  Параметр      | Тип         | Подробности
  -------------- | ------------ |:---------------------------------
- модель         | ((string))   | [identity](https://github.com/tvortsa/sails-docs/edit/1.0/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (в `GET /purchase`)
+ модель         | ((string))   | [identity](https://github.com/tvortsa/sails-docs/blob/1.0/concepts/ORM/model-settings.md#identity) of the containing model.<br/><br/>e.g. `'purchase'` (в `GET /purchase`)
  _*_              | ((string?))   | Чтобы фильтровать результаты на основе определенного атрибута, задайте параметр запроса с тем же именем что и атрибут объявленный в вашей модели. <br/> <br/> Например, если ваша модель `Purchase` имеет атрибут **amount** , мы должны послать `GET /purchase?amount=99.99` чтобы вернуть список заказов $99.99.
  _where_          | ((string?))   | Вместо фильтрации на основе определенного атрибута, вы можете вместо этого выбрать параметр `where` где WHERE часть [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language), _представленного как JSON строка.  Это позволяет вам воспользоваться преимуществами `contains`, `startsWith`, и другими sub-attribute criteria modifiers для придания мощи запросам `find()`. <br/> <br/> e.g. `?where={"name":{"contains":"theodore"}}`
  _limit_          | ((number?))   | Максимальное количество возвращаемых записей (полезно при пагинации). По умолчанию 30. <br/> <br/> e.g. `?limit=100`
