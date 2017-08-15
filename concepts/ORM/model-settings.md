@@ -1,29 +1,29 @@
 # Настройки модели
 
-В Sails, свойства верхнего уровня определения модели называются **model settings**.  This includes everything from [attribute definitions](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?attributes), to the [database settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?datastore) the model will use, as well as a few other options.
+В Sails, свойства верхнего уровня определения модели называются **model settings**.  Сюда входят все: [attribute definitions](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?attributes), в [database settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?datastore) что модель будет использовать, a также несколько других.
 
-The majority of this page is devoted to a complete tour of the model settings supported by Sails.  But before we begin, let's look at how to actually apply these settings in a Sails app.
-
-
-### Overview
-
-Model settings allow you to customize the behavior of the models in your Sails app.  They can be specified on a per-model basis by setting top-level properties in a [model definition](http://sailsjs.com/documentation/concepts/models-and-orm/models), or as app-wide defaults in [`sails.config.models`](http://sailsjs.com/documentation/reference/configuration/sails-config-models).
-
-##### Changing default model settings
-
-To modify the [default model settings](http://sailsjs.com/documentation/reference/configuration/sails-config-models) shared by all of the models in your app, edit [`config/models.js`](http://sailsjs.com/documentation/anatomy/my-app/config/models-js).
-
-For example, when you generate a new app, Sails automatically includes three different default attributes in your `config/models.js` file:  `id`, `createdAt`, and `updatedAt`.  Let's say that, for all of your models, you wanted to use a slightly different, customized `id` attribute. To do so, you could just override `attributes: {  id: {...}  }` in your `config/models.js` definition.
+Большая часть этой страницы посвящена полному просмотру параметров модели, поддерживаемых Sails. Но прежде чем мы начнем, давайте рассмотрим, как реально применять эти параметры в приложении Sails.
 
 
-##### Overriding settings for a particular model
+### Обзор
 
-To further customize these settings for a particular model, you can specify them as top-level properties in that model's definition file (e.g. `api/models/User.js`).  This will override default model settings with the same name.
+Model settings позволяют настраивать поведение моделей в приложении Sails.  Они могут быть указаны на основе каждой модели, устанавливая свойства верхнего уровня в [model definition](http://sailsjs.com/documentation/concepts/models-and-orm/models), или как app-wide defaults в [`sails.config.models`](http://sailsjs.com/documentation/reference/configuration/sails-config-models).
 
-For example, if you add `fetchRecordsOnUpdate: true` to one of your model definitions (`api/models/UploadedFile.js`), then that model will now return the records that were updated.  But the rest of your models will be unaffected; they will still use the default setting (which is `fetchRecordsOnUpdate: false`, unless you've changed it).
+##### Изменение default model settings
+
+Для изменения [default model settings](http://sailsjs.com/documentation/reference/configuration/sails-config-models) для всех models вашего приложения, измените [`config/models.js`](http://sailsjs.com/documentation/anatomy/my-app/config/models-js).
+
+Например, когда вы создаете новое приложение, Sails автоматически включает три разных атрибута по умолчанию в вашем `config/models.js` file:  `id`, `createdAt`, и `updatedAt`.  Предположим, что для всех ваших моделей вы хотели использовать несколько иной, специфичный `id` атрибут. Для этого просто override `attributes: {  id: {...}  }` в вашем объявлении `config/models.js` .
 
 
-##### Choosing an approach
+##### Overriding настроек для конкретной модели
+
+Чтобы дополнительно настроить эти параметры для конкретной модели, вы можете указать их как свойства верхнего уровня в файле определения модели (e.g. `api/models/User.js`).  Это приведет к переопределению настроек модели по умолчанию с тем же именем.
+
+Например, если вы добавите `fetchRecordsOnUpdate: true` к объявлению одной из ваших моделей то (`api/models/UploadedFile.js`), То эта модель теперь вернет обновленные записи.  Но остальная часть ваших моделей не будет затронута; Они по-прежнему будут использовать настройку по умолчанию (которая `fetchRecordsOnUpdate: false`, если вы не изменяли её).
+
+
+##### Выбор подхода
 
 In your day to day development, the model setting you'll interact with most often is `attributes`. Attributes are used in almost every model definition, _and_ some default attributes are included in `config/models.js`.  But for future reference, here are a few additional tips:
 
@@ -39,9 +39,9 @@ Now that you know what model settings are in general, and how to configure them,
 
 
 
-### attributes
+### атрибуты
 
-The set of attribute definitions for a model.
+Набор определений атрибутов для модели.
 
 ```
 attributes: { /* ... */ }
@@ -51,7 +51,7 @@ attributes: { /* ... */ }
 | -------------- |:------------------------|:--------------|
 | ((dictionary)) | _See below._            | `{}`          |
 
-Most of the time, you'll define attributes in your individual model definitions (in `api/models/`).  But you can also specify **default attributes** in `config/models.js`.  This allows you to define a set of global attributes in one place, and then rely on Sails to make them available to all of your models implicitly, without repeating yourself.  Default attributes can also be overridden on a per-model basis by defining a replacement attribute with the same name in the relevant model definition.
+В большинстве случаев вы определяете атрибуты в своих индивидуальных определениях моделей (in `api/models/`).  Но вы также можете указать **default attributes** в `config/models.js`.  Это позволяет вам определять набор глобальных атрибутов в одном месте, а затем полагаться на Sails, чтобы сделать их доступными для всех ваших моделей неявным образом, не повторяя себя.  Атрибуты по умолчанию также могут быть переопределены для каждой модели, определяя атрибут замены с тем же именем в соответствующем определении модели
 
 ```js
 attributes: {
@@ -61,7 +61,7 @@ attributes: {
 }
 ```
 
-For a complete introduction to model attributes, including how to define and use them in your Sails app, see [Concepts > ORM > Attributes](http://sailsjs.com/documentation/concepts/orm/attributes).
+Для полного ознакомления с атрибутами модели, включая определение и использование их в приложении Sails, см [Concepts > ORM > Attributes](http://sailsjs.com/documentation/concepts/orm/attributes).
 
 ### customToJSON
 
@@ -90,7 +90,7 @@ customToJSON: function() {
 
 ### tableName
 
-The name of the SQL table (/MongoDB collection) where a model will store and retrieve its records as rows (/MongoDB documents).
+Имя SQL таблицы (/MongoDB коллекции) where a model will store and retrieve its records as rows (/MongoDB documents).
 
 ```
 tableName: 'some_preexisting_table'
@@ -100,7 +100,7 @@ tableName: 'some_preexisting_table'
 | ----------- |:---------------------------|:--------------|
 | ((string))  | `'some_preexisting_table'` | _Same as model's identity._
 
-By default, this is the same as the model's [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings?identity).    But if you find yourself integrating with a shared/legacy database, the ability to customize `tableName` this way can save you a lot of time.
+По умолчанию оно такое же как и у модели [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings?identity).    But if you find yourself integrating with a shared/legacy database, the ability to customize `tableName` this way can save you a lot of time.
 
 The **tableName** setting gives you the ability to customize the name of the underlying _physical model_ that a particular model should use.  In other words, it lets you control where a model stores and retrieves records within the database, _without_ affecting the code in your controller actions / helpers.
 
@@ -123,7 +123,7 @@ User.find().exec(...)
 
 ### migrate
 
-The **auto-migration strategy** that Sails will run every time your app loads.
+Это **auto-migration strategy** которую Sails будет запускаться каждый раз, когда ваше приложение загружается.
 
 ```
 migrate: 'alter'
@@ -165,7 +165,7 @@ When you lift your Sails app in a development environment (e.g. running `sails l
 
 ##### Can I use auto-migrations in production?
 
-The `drop` and `alter` auto-migration strategies in Sails exist as a feature for your convenience during development, and when running automated tests.  **They are not designed to be used with data you care about.**  Please take care to never use `drop` or `alter` with a production dataset.  In fact, as a failsafe to help protect you from doing this inadvertently, any time you lift your app [in a production environment](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment), Sails _always_ uses `migrate: 'safe'`, no matter what you have configured.
+The `drop` and `alter` auto-migration strategies in Sails exist as a feature for your convenience during development, and when running automated tests.  **They are not designed to be used with data you care about.**  Будьте осторожны никогда не используйте `drop` или `alter` в продакшне.  In fact, as a failsafe to help protect you from doing this inadvertently, any time you lift your app [in a production environment](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment), Sails _always_ uses `migrate: 'safe'`, no matter what you have configured.
 
 In many cases, hosting providers automatically set the `NODE_ENV` environment variable to "production" when they detect a Node.js app.  Even so, please don't rely only on that failsafe, and take the usual precautions to keep your users' data safe.  Any time you connect Sails (or any other tool or framework) to a database with pre-existing production data, **do a dry run**.  Especially the very first time.  Production data is sensitive, valuable, and in many cases irreplaceable.  Customers, users, and their lawyers are not cool with it getting flushed.
 
@@ -199,7 +199,7 @@ The `schema` setting allows you to toggle a model between "schemaless" or "schem
 
 ### datastore
 
-The name of the [datastore configuration](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores) that a model will use to find records, create records, etc.
+Имя [datastore configuration](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores) которое модель будет использовать для поиска записей, создания записей и т.д.
 
 ```
 datastore: 'legacyECommerceDb'
@@ -209,7 +209,7 @@ datastore: 'legacyECommerceDb'
 | ---------- |:------------------------|:--------------|
 | ((string)) | `'legacyECommerceDb'`   | `'default'`   |
 
-This indicates the database where this model will fetch and save its data.  Unless otherwise specified, every model in your app uses a built-in datastore named "default", which is included in every new Sails app out of the box.  This makes it easy to configure your app's primary database, while still allowing you to override the `datastore` setting for any particular model.
+Это указывает базу данных, в которой эта модель будет извлекать и сохранять свои данные.  Если не указано иное, каждая модель вашего приложения использует встроенное хранилище данных с именем «default», которое включено в каждое новое приложение Sails из коробки.  Это упрощает настройку основной базы данных вашего приложения, но при этом позволяет переопределить параметр «datastore» для любой конкретной модели.
 
 For more about configuring your app's datastores, see [Reference > Configuration > Datastores](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores).
 
@@ -245,9 +245,9 @@ The following low-level settings are included in the spirit of completeness, but
 
 ##### primaryKey
 
-The name of a model's primary key attribute.
+Имя атрибута первичного ключа модели.
 
-> **You should never need to change this setting, since you set a custom `columnName` on the "id" attribute.**
+> **Вам не нужно менять этот параметр, поскольку вы настраиваете `columnName` в "id" attribute.**
 
 ```javascript
 primaryKey: 'id'
@@ -284,7 +284,7 @@ User.find({ id: req.param('emailAddress' }).exec(/*...*/);
 
 ##### identity
 
-The lowercase, unique identifier for a model.
+Уникальный идентификатор модели в нижнем регистре.
 
 > **A model's `identity` is read-only.  It is automatically derived, and should never be set by hand.**
 
