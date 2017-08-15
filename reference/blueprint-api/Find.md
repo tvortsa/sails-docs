@@ -1,24 +1,24 @@
 # Find (Blueprint)
 
-Find a list of records that match the specified criteria and (if possible) subscribe to each of them.
+Find это список записей которые соответствуют заданному критерию и (если возможно) subscribe на каждый из них.
 
 ```usage
 GET /:model
 ```
 
-Results may be filtered, paginated, and sorted based on the blueprint configuration and/or parameters sent in the request.
+Результат может быть отфильтрован, подвергнут паджинации, и отсортирован на основе конфигурации blueprint и/или параметров переданных в запрос.
 
-If the action was triggered via a socket request, the requesting socket will be "subscribed" to all records returned. If any of the returned records are subsequently updated or deleted, a message will be sent to that socket's client informing them of the change. See the [docs for Model.subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for details.
+Если action был вызван запросом сокета, запрашивающий сокет будет "subscribed" для всех возвращаемых записей. Если какая-либо из возвращенных записей впоследствии обновляется или удаляется, клиенту этого сокета будет отправлено сообщение об изменении. См [docs for Model.subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) .
 
 
-### Parameters
+### Параметры
 
- Parameter      | Type         | Details
+ Параметр      | Тип         | Подробности
  -------------- | ------------ |:---------------------------------
- model          | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `GET /purchase`)
- _*_              | ((string?))   | To filter results based on a particular attribute, specify a query parameter with the same name as the attribute defined on your model. <br/> <br/> For instance, if our `Purchase` model has an **amount** attribute, we could send `GET /purchase?amount=99.99` to return a list of $99.99 purchases.
- _where_          | ((string?))   | Instead of filtering based on a specific attribute, you may instead choose to provide a `where` parameter with the WHERE piece of a [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language), _encoded as a JSON string_.  This allows you to take advantage of `contains`, `startsWith`, and other sub-attribute criteria modifiers for more powerful `find()` queries. <br/> <br/> e.g. `?where={"name":{"contains":"theodore"}}`
- _limit_          | ((number?))   | The maximum number of records to send back (useful for pagination). Defaults to 30. <br/> <br/> e.g. `?limit=100`
+ модель         | ((string))   | [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (в `GET /purchase`)
+ _*_              | ((string?))   | Чтобы фильтровать результаты на основе определенного атрибута, задайте параметр запроса с тем же именем что и атрибут объявленный в вашей модели. <br/> <br/> Например, если ваша модель `Purchase` имеет атрибут **amount** , мы должны послать `GET /purchase?amount=99.99` чтобы вернуть список заказов $99.99.
+ _where_          | ((string?))   | Вместо фильтрации на основе определенного атрибута, вы можете вместо этого выбрать параметр `where` где WHERE часть [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language), _представленного как JSON строка.  Это позволяет вам воспользоваться преимуществами `contains`, `startsWith`, и другими sub-attribute criteria modifiers для придания мощи запросам `find()`. <br/> <br/> e.g. `?where={"name":{"contains":"theodore"}}`
+ _limit_          | ((number?))   | Максимальное количество возвращаемых записей (полезно при пагинации). По умолчанию 30. <br/> <br/> e.g. `?limit=100`
  _skip_           | ((number?))   | The number of records to skip (useful for pagination). <br/> <br/> e.g. `?skip=30`
  _sort_           | ((string?))   | The sort order. By default, returned records are sorted by primary key value in ascending order. <br/> <br/> e.g. `?sort=lastName%20ASC`
  _select_         | ((string?))   | The attributes to include each record in the result, specified as a comma-delimited list.  By default, all attributes are selected.  Not valid for plural (&ldquo;collection&rdquo;) association attributes.<br/> <br/> e.g. `?select=name,age`.
@@ -27,7 +27,7 @@ If the action was triggered via a socket request, the requesting socket will be 
 
 
 
-### Example
+### Пример
 
 Find up to 30 of the newest purchases in our database:
 
