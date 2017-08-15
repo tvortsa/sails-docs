@@ -6,7 +6,7 @@ Blueprint actions (не путать с неявным [blueprint "action" _rout
 
 Текущая версия Sails поставляется со следующими blueprint actions:
 
-+ [find](http://sailsjs.com/documentation/reference/blueprint-api/find)
++ [find](/reference/blueprint-api/find)
 + [findOne](http://sailsjs.com/documentation/reference/blueprint-api/findOne)
 + [create](http://sailsjs.com/documentation/reference/blueprint-api/create)
 + [update](http://sailsjs.com/documentation/reference/blueprint-api/update)
