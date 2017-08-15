@@ -1,18 +1,18 @@
 # Blueprints
 
-### Overview
+### Обзор
 
-Like any good web framework, Sails aims to reduce both the amount of code you write and the time it takes to get a functional app up and running.  _Blueprints_ are Sails&rsquo;s way of quickly generating API [routes](http://sailsjs.com/documentation/concepts/routes) and [actions](http://sailsjs.com/documentation/concepts/controllers#?actions) based on your application design.
+Как любой хороший web фрэймворк, Sails нацелен на сокращение как количества кода, который вы пишете, так и времени, необходимого для запуска и запуска функционального приложения.  _Blueprints_ это Sails&rsquo;s способ быстрой генерации API [routes](http://sailsjs.com/documentation/concepts/routes) и [actions](http://sailsjs.com/documentation/concepts/controllers#?actions) основанном на дизайне вашего приложения.
 
-Together, [blueprint routes](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes) and [blueprint actions](http://sailsjs.com/documentation/concepts/blueprints/blueprint-actions) constitute the **blueprint API**, the built-in logic that powers the [RESTful JSON API](http://en.wikipedia.org/wiki/Representational_state_transfer) you get every time you create a model and controller.
+Вместе, [blueprint routes](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes) и [blueprint actions](http://sailsjs.com/documentation/concepts/blueprints/blueprint-actions) составляют **blueprint API**, встроенная логика на основе [RESTful JSON API](http://en.wikipedia.org/wiki/Representational_state_transfer) которую вы получаете всякий раз создавая model и controller.
 
-For example, if you create a `User.js` model file in your project, then with blueprints enabled you will be able to immediately visit `/user/create?name=joe` to create a user, and visit `/user` to see an array of your app's users.  All without writing a single line of code!
+НАпример, если вы создали файл модели `User.js` в своем проекте, то с включенным blueprints вы сможете сразу посетить `/user/create?name=joe` для создания user, и посетить `/user` чтобы увидеть массив users вашего приложения. 
 
-Blueprints are a powerful tool for prototyping, but in many cases can be used in production as well, since they can be overridden, protected, extended or disabled entirely.
+Blueprints является мощным инструментом для прототипирования, но во многих случаях может быть использован и в производстве, поскольку он может быть переопределен, защищен, расширен или полностью отключен.
 
-### Up next
+### Далее
 
-+ [Read more](http://sailsjs.com/documentation/concepts/blueprints/blueprint-actions) about built-in blueprint actions
-+ [Read more](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes) about implicit "shadow" routes and how to configure or override them
++ [Read more](http://sailsjs.com/documentation/concepts/blueprints/blueprint-actions) о встроенных blueprint actions
++ [Read more](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes) о неявных "shadow" routes и как настроить или переопределить их
 
 <docmeta name="displayName" value="Blueprints">
