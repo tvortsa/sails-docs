@@ -6,15 +6,15 @@ Blueprint actions (не путать с неявным [blueprint "action" _rout
 
 Текущая версия Sails поставляется со следующими blueprint actions:
 
-+ [find](/reference/blueprint-api/find)
-+ [findOne](http://sailsjs.com/documentation/reference/blueprint-api/findOne)
-+ [create](http://sailsjs.com/documentation/reference/blueprint-api/create)
-+ [update](http://sailsjs.com/documentation/reference/blueprint-api/update)
-+ [destroy](http://sailsjs.com/documentation/reference/blueprint-api/destroy)
-+ [populate](http://sailsjs.com/documentation/reference/blueprint-api/populate)
-+ [add](http://sailsjs.com/documentation/reference/blueprint-api/add)
-+ [remove](http://sailsjs.com/documentation/reference/blueprint-api/remove)
-+ [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace)
++ [find](https://github.com/tvortsa/sails-docs/blob/1.0/reference/blueprint-api/Find.md)
++ [findOne](https://github.com/tvortsa/sails-docs/blob/1.0/reference/blueprint-api/findOne)
++ [create](https://github.com/tvortsa/sails-docs/blob/1.0/reference/blueprint-api/create)
++ [update](https://github.com/tvortsa/sails-docs/blob/1.0/reference/blueprint-api/update)
++ [destroy](https://github.com/tvortsa/sails-docs/blob/1.0/reference/blueprint-api/destroy)
++ [populate](https://github.com/tvortsa/sails-docs/blob/1.0/reference/blueprint-api/populate)
++ [add](https://github.com/tvortsa/sails-docs/blob/1.0/reference/blueprint-api/add)
++ [remove](https://github.com/tvortsa/sails-docs/blob/1.0/reference/blueprint-api/remove)
++ [replace](https://github.com/tvortsa/sails-docs/blob/1.0/reference/blueprint-api/replace)
 
 ### Socket notifications
 
