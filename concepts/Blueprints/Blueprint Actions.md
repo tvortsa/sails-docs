@@ -1,10 +1,10 @@
 # Blueprint actions
 
-Blueprint actions (not to be confused with implicit [blueprint "action" _routes_](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?action-routes)) are generic actions designed to work with your models.  Think of them as the default behavior for your application.  For instance, if you have a `User.js` model then `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
+Blueprint actions (не путать с неявным [blueprint "action" _routes_](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?action-routes)) это generic actions для работы с вашими моделями.  Думайте о них как о поведении по умолчанию для вашего приложения.  Например если у вас есть модель `User.js`то `find`, `create`, `update`, `destroy`, `populate`, `add` и `remove` actions существуют неявно, без необходимости написания их вами.
 
-By default, the blueprint [RESTful routes](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?restful-routes) and [shortcut routes](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?shortcut-routes) are bound to their corresponding blueprint actions.  However, any blueprint action can be overridden for a particular controller by creating a custom action in that controller file (e.g. `ParrotController.find`).
+По умолчанию, blueprint [RESTful routes](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?restful-routes) и [shortcut routes](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?shortcut-routes) связаны с соответствующими им blueprint actions.  Однако, любое blueprint action может быть overridden ля конкретного контроллера путем создания пользовательского action в этом файле контроллера (e.g. `ParrotController.find`).
 
-The current version of Sails ships with the following blueprint actions:
+Текущая версия Sails поставляется со следующими blueprint actions:
 
 + [find](http://sailsjs.com/documentation/reference/blueprint-api/find)
 + [findOne](http://sailsjs.com/documentation/reference/blueprint-api/findOne)
@@ -18,11 +18,11 @@ The current version of Sails ships with the following blueprint actions:
 
 ### Socket notifications
 
-Most blueprint actions have realtime features that take effect if your app has WebSockets enabled.  For example, if the **find** blueprint action receives a request from a socket client, it will [subscribe](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) that socket to future notifications.  Then, any time records are changed using blueprint actions like **update**, Sails will [publish](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/publish) certain notifications.
+Большинство blueprint actions имеют функции реального времени, которые вступают в силу, если ваше приложение имеет активированные WebSockets.  Например, если **find** blueprint action принимает запрос от socket клиента, оно будетit [subscribe](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) этот socket на следующие уведомления.  Затем любые time records измененные с использованием таких действий, как **update**, Sails будет [publish](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/publish) соответствующие уведомления.
 
-The best way to understand the behavior of a particular blueprint action is to read its [reference page](http://sailsjs.com/documentation/reference/blueprint-api) (or see the list above).  But if you're looking for more of a birds-eye view of how realtime features work in Sails's blueprint API, see [**Concepts > Realtime**](http://sailsjs.com/documentation/concepts/realtime).  (If you're OK with some details being out of date, you might even want to check out the [original "Intro to Sails.js" video from 2013](https://www.youtube.com/watch?v=GK-tFvpIR7c).)
+Лучший способ понять поведение конкретного blueprint action прочесть его [страницу руководства](http://sailsjs.com/documentation/reference/blueprint-api) (или см. список выше).  Но если вы ищете больше общий взгляд на то как  работают функции реального времени Sails's blueprint API, см [**Concepts > Realtime**](http://sailsjs.com/documentation/concepts/realtime).  (Если вы не против некоторых устаревших деталей, можете посмотреть [original "Intro to Sails.js" video from 2013](https://www.youtube.com/watch?v=GK-tFvpIR7c).)
 
-> For a more advanced breakdown of all notifications published by blueprint actions in Sails, see:
+> Для более подробной разбивки всех уведомлений, опубликованных в Sails, см:
 > + [Chart A (scenarios vs. notification types)](https://docs.google.com/spreadsheets/d/10FV9plyHR4gE9xIomIZlF-YS1S54oHEdvH8ZmTC1Fnc/edit#gid=0)
 > + [Chart B (actions vs. recipients)](https://docs.google.com/spreadsheets/d/1B6i8aOoLNLtxJ4aeiA8GQ2lUQSvLOrP89RSLr7IAImw/edit#gid=0)
 
