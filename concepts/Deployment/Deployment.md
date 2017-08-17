@@ -104,31 +104,31 @@ If your API or website does anything that requires authentication, you should us
 
 
 
-##### Lift Your app
+##### Поднимаем приложение
 
-The last step of deployment is actually starting the server.  For example:
+Последний шаг развертывания - это фактически запуск сервера.  Например:
 
 ```bash
 NODE_ENV=production node app.js
 ```
 
-Or if you're more comfortable with command-line options you can use `--prod`:
+Или, если вам удобнее использовать параметры командной строки, вы можете использовать `--prod`:
 
 ```bash
 node app.js --prod
 # (Sails will set `NODE_ENV` automatically)
 ```
 
-As you can see, instead of `sails lift` you should start your Sails app with `node app.js` in production.  This way, your app does not rely on having access to the `sails` command-line tool; it just runs the `app.js` file bundled in your Sails app (which does exactly the same thing).
+Как вы можете видеть, вместо `sails lift` вы должны запускать ваше приложение Sails командой `node app.js` в production.  Таким образом, ваше приложение не полагается на доступ к `sails` command-line tool; it just runs the `app.js` file bundled in your Sails app (который делает то же самое).
 
 
-##### ...And keep it lifted
+##### ...И держите его поднятым
 
-Unless you are not deploying to a PaaS like Heroku, you will want to use a tool like [`pm2`](http://pm2.keymetrics.io/) or [`forever`](https://github.com/foreverjs/forever) to make sure your app server will start back up if it crashes.  Regardless of the daemon you choose, you'll want to make sure that it starts the server as described above.
+Если вы не собираетесь использовать PaaS, например Heroku, вы захотите использовать такой инструмент, как [`pm2`](http://pm2.keymetrics.io/) или [`forever`](https://github.com/foreverjs/forever) Чтобы убедиться, что ваш сервер приложений начнет резервное копирование, если он крашнется.  Независимо от выбранного вами демона, вы должны убедиться, что он запускает сервер, как описано выше.
 
 
 
-### Next steps
+### Следующие щаги
 
 + [Scaling your Sails/Node.js app](http://sailsjs.com/documentation/concepts/deployment/scaling)
 +
