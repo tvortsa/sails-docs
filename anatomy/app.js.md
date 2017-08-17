@@ -1,12 +1,14 @@
 # app.js
 
-This file is the conventional entry point for a _production_ Sails/Node.js app.
+### Назначение
 
-When developing on your local computer, and you run `sails lift`, the code in `app.js` is not executed.  Instead, this file exists to provide an easy, out-of-the-box way to run your app _without_ typing `sails lift`.  This is most likely how you'll start your app in production (i.e. `node app`, or `npm start`).
+ Этот файл является обычной точкой входа для _production_ Sails/Node.js app.
 
-For example, when you deploy to most PaaS vendors like [Heroku](http://heroku.com), they will automatically detect that you're running a Sails/Node.js app and execute this file with the `NODE_ENV` environment variable set to production.
+При разработке на локальном компьютере, и запуске `sails lift`, код в `app.js` не выполняется.  Вместо этого, файл обеспечивает простой готовый способ запуска вашего приложения _без необходимости_ писать `sails lift`.  Это, скорее всего, то, как вы стартуете свое приложение в продакшне (i.e. `node app`, or `npm start`).
 
-> Whatever stage of the development lifecycle you're at, you can safely ignore `app.js`.  It's good to go out of the box for most apps.  But the code in `app.js` also serves as an easy-to-reference example of how to use Sails programmatically.  So you might want to take a look at it if you plan on writing automated tests, scheduled jobs, manual database migrations, or administration scripts.
+Например, когда вы деплоите у большинства поставщиков PaaS типа [Heroku](http://heroku.com), они автоматически обнаруживают что вы запустили Sails/Node.js приложение и выполняют этот файл с переменной окружения `NODE_ENV` установленной в production.
+
+> Независимо от этапа жизненного цикла разработки, на котором вы находитесь, вы можете спокойно игнорировать `app.js`.  Приятно выходить из коробки для большинства приложений.  Но код в `app.js` также служит в простым примером использования Sails программно.  So you might want to take a look at it if you plan on writing automated tests, scheduled jobs, manual database migrations, or administration scripts.
 
 
 <docmeta name="displayName" value="app.js">
