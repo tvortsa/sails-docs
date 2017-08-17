@@ -74,20 +74,20 @@ port: 80
 
 
 
-##### Set up production database(s) for your models
+##### Настройка production БД для ваших моделей
 
-If all of your app&rsquo;s models use the default datastore, then setting up your production database is as simple as configuring `sails.config.datastores.default` in the [config/env/production.js](http://sailsjs.com/documentation/concepts/configuration#?environmentspecific-files-config-env) file with the correct settings.
+Если все модели вашего приложения используют дефолтную БД (default datastore), то настройка вашей продакшн БД просто, как настройка `sails.config.datastores.default` в файле [config/env/production.js](http://sailsjs.com/documentation/concepts/configuration#?environmentspecific-files-config-env) корректными параметрами.
 
 If your app is using more than one database, your process will be similar.  For every datastore used by the app, add an item to the `sails.config.datastores` dictionary in [config/env/production.js](http://sailsjs.com/documentation/concepts/configuration#?environmentspecific-files-config-env).
 
 Keep in mind that if you are using version control (e.g. git), then any sensitive credentials (such as database passwords) will be checked in to the repo if you include them in your app's configuration files.  A common solution to this problem is to provide certain sensitive configuration settings as environment variables.  See [Configuration](http://sailsjs.com/documentation/concepts/configuration) for more information.
 
-If you are using a relational database such as MySQL, there is an additional step.  Remember how Sails sets all your models to `migrate:safe` when run in production?  That means no auto-migrations are run when lifting the app...which means by default your tables won't exist.  A common approach to deal with this during the first-time setup of a relational database for your Sails app goes as follows:
+If you are using a relational database such as MySQL, there is an additional step.  Remember how Sails sets all your models to `migrate:safe` when run in production? Это означает, что автоматические миграции не выполняются при запуске приложения...Что означает, что по умолчанию ваши таблицы не будут существовать.  A common approach to deal with this during the first-time setup of a relational database for your Sails app goes as follows:
   + Create the database on the production database server (e.g. `frenchfryparty`)
   + Configure your app locally to use this production database, but _don't set the environment to `'production'`, and leave your models' configuration set to `migrate: 'alter'`_.  Now run `sails lift` **once**-- and when the local server finishes lifting, kill it.
-    + **Be careful!**  You should only do this when there is _no data_ in the production database.
+    + **Be careful!**  Вы должны делать это только тогда, когда _данных нет_ в production database.
 
-If this makes you nervous or if you can't connect to the production database remotely, you can skip the steps above.  Instead, simply dump your local schema and import it into the production database.
+Если это вас раздражает, или если вы не можете подключиться к базе данных производства удаленно, вы можете пропустить описанные выше шаги.  Вместо этого просто удалите локальную схему и импортируйте ее в производственную базу данных.
 
 
 ##### Enable CSRF protection
