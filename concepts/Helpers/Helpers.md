@@ -1,10 +1,10 @@
 # Helpers
 
-С версии 1.0, все Sails приложения поставляются со встроенной поддержкой **helpers**, простые утилиты, которые позволяют вам делиться Node.js кодом в более чем одном месте.  This helps you avoid repeating yourself, and makes development more efficient by reducing bugs and minimizing rewrites.  It also makes it much easier to create documentation for your app.
+С версии 1.0, все Sails приложения поставляются со встроенной поддержкой **helpers**, простые утилиты, которые позволяют вам делиться Node.js кодом в более чем одном месте.  Это позволяет вам избегать повторения кода, и делает разработку эфективнее сокращая баги и минимизируя rewrites.  А так же упрощает документирование вашего приложения.
 
-### Overview
+### Обзор
 
-In Sails, helpers are the recommended approach for pulling repeated code into a separate file, then reusing that code in various [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers), [custom responses](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses), [command-line scripts](https://www.npmjs.com/package/machine-as-script), [unit tests](http://sailsjs.com/documentation/concepts/testing), or even other helpers. You don't _have_ to use helpers-- in fact you might not even need them right at first.  But as your code base grows, helpers will become more and more important for your app's maintainability.  (Plus, they're really convenient.)
+В Sails, helpers это рекомендуемый подход для вытягивания повторяющегося кода в отдельный файл, и затем его повторное использование в разных [actions](https://github.com/tvortsa/sails-docs/blob/1.0/concepts/ActionsAndControllers/ActionsAndControllers.md), [custom responses](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses), [command-line scripts](https://www.npmjs.com/package/machine-as-script), [unit tests](http://sailsjs.com/documentation/concepts/testing), и даже в других helpers. Вы _не обязаны_ использовать helpers-- на самом деле по-началу это скорее всего и не нужно.  But as your code base grows, helpers will become more and more important for your app's maintainability.  (Plus, they're really convenient.)
 
 For example, in the course of creating the actions that your Node.js/Sails app uses to respond to client requests, you will sometimes find yourself repeating code in several places.  That can be pretty bug-prone, of course, not to mention annoying.  Fortunately, there's a neat solution: replace the duplicate code with a call to a custom helper:
 
