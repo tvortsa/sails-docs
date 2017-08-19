@@ -164,7 +164,7 @@ where each of the three Javascript files exports a `req, res` function or an Act
 * Each action file is small and easy to maintain, whereas controller files tend to grow as your app grows.
 * [Routing to standalone actions](http://sailsjs.com/documentation/concepts/routes/custom-routes#?action-target-syntax) in nested subfolders is more intuitive than with nested controller files (`foo/bar/baz.js` vs. `foo/BarController.baz`).
 
-* Blueprint index routes apply to top-level standalone actions, so you can create an `api/controllers/index.js` file and have it automatically bound to your app&rsquo;s `/` route (as opposed to having to create an arbitrary controller file to hold the root action).
+* Blueprint index routes применяются к standalone actions уровнем выше, так создавая файл `api/controllers/index.js` автоматически привязывает его к app&rsquo;s `/` route (в отличие от необходимости создавать произвольный файл контроллера для хранения в нем root action действия).
 
 
 ### Keeping it lean
