@@ -1,8 +1,8 @@
 # Custom routes
 
-### Overview
+### Обзор
 
-Sails allows you to explicitly route URLs in several different ways in your **config/routes.js** file.  Every route configuration consists of an **address** and a **target**, for example:
+Sails позволяет явно указывать маршрут URLs несколькими способами в вашем файле **config/routes.js**.  Каждый route configuration содержит **address** и **target**, напрмиер:
 
 ```js
 'GET /foo/bar': 'UserController.subscribe'
@@ -11,14 +11,14 @@ Sails allows you to explicitly route URLs in several different ways in your **co
 
 ### Route Address
 
-The route address indicates what URL should be matched in order to apply the handler and options defined by the target.  A route consists of an optional verb and a mandatory path:
+Адрес роута это URL который должен быть сопоставлен применению обработчика and options defined by the target.  Route содержит опционально verb и mandatory путь:
 
 ```js
 'POST  /foo/bar'
 ^verb^ ^^path^^
 ```
 
-If no verb is specified, the route will match any CRUD method (**GET**, **PUT**, **POST**, **DELETE** or **PATCH**).  If `ALL` is specified as the verb, the route will match _any_ method.
+Если verb не задан, route будет сопоставлять ему любые CRUD методы (**GET**, **PUT**, **POST**, **DELETE** или **PATCH**).  Если `ALL` задано как verb, тоroute будет match _any_ method.
 
 Note the initial `/` in the path--all paths should start with one in order to work properly.
 
@@ -79,11 +79,11 @@ If you have any [regular expression addresses](http://sailsjs.com/documentation/
 
 ### Route Target
 
-The address portion of a custom route specifies which URLs the route should match.  The *target* portion specifies what Sails should do after the match is made.  A target can take one of several different forms.  In some cases you may want to chain multiple targets to a single address by placing them in an array, but in most cases each address will have only one target.  The different types of targets are discussed below, followed by a discussion of the various options that can be applied to them.
+В части address ваш custom route задает то какой URL должен соответствовать маршруту.  В части *target* указывается что Sails должен делать после того как совпадение с адресом установлено. Target может принимать одну из нескольких форм.  В некоторых случаях вам может потребоваться привязать несколько целей к одному адресу, поместив их в массив, Но в большинстве случаев каждый адрес будет иметь только один target.  Различные типы targets обсуждаются нижеw, после чего следует обсуждение различных вариантов, которые могут быть применены к ним.
 
 ##### Controller / action target syntax
 
-This syntax binds a route to an action in a [controller file](http://sailsjs.com/documentation/concepts/actions-and-controllers#?controllers).  The following four routes are equivalent:
+Этот синтаксис связывает route с action в файле контроллера [controller file](http://sailsjs.com/documentation/concepts/actions-and-controllers#?controllers).  Следующие четыре роута жквивалентны:
 
 ```js
 'GET /foo/go': 'FooController.myGoAction',
@@ -92,7 +92,7 @@ This syntax binds a route to an action in a [controller file](http://sailsjs.com
 'GET /foo/go': { controller: 'FooController', action:'myGoAction' },
 ```
 
-Each one maps `GET /foo/go` to the `myGoAction` action of the controller in **api/controllers/FooController.js**, or to the action in **api/controllers/foo/mygoaction.js**.  If no such controller or action exists, Sails will output an error message and ignore the route.  Otherwise, whenever a **GET** request to **/foo/go** is made, the code in that action will be run.
+Каждый соответствует `GET /foo/go` на `myGoAction` action контроллера в **api/controllers/FooController.js**, или action в **api/controllers/foo/mygoaction.js**.  Если такой контроллер или действие не существует, Sails выдает сообщение об ошибке и игнорирует маршрут.  Otherwise, whenever a **GET** request to **/foo/go** is made, the code in that action will be run.
 
 The controller and action names in this syntax are case-insensitive.
 
