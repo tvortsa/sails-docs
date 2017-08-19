@@ -44,7 +44,7 @@ Partials автоматически наследуют view locals которы�
 /**
  * views/partials/navbar.ejs
  *
- * The navbar at the top of the page.
+ *  navbar сверху страницы.
  *
  * @needs {Dictionary} currentUser
  *   @property {Boolean} isLoggedIn
@@ -56,13 +56,13 @@ Partials автоматически наследуют view locals которы�
     <a href="/inbox">Inbox</a>
   </div>
   <div class="login-or-signup"><%
-  // If the user accessing this page is logged in...
+  // если пользователь имеет доступ к этой странице то он залогинен...
   if (currentUser.isLoggedIn) {
   %><span>
-    You are signed in as <a href="/<%= currentUser.username %>"><%= currentUser.username %></a>.
+    Вы вошли как <a href="/<%= currentUser.username %>"><%= currentUser.username %></a>.
   </span><%
   }
-  // Otherwise the user accessing this page must be a visitor:
+  // В противном случае пользователь, обращающийся к этой странице, должен быть посетителем:
   else {
   %><span>
     <a href="/login">Log in</a>
@@ -80,9 +80,9 @@ Partials автоматически наследуют view locals которы�
 
 ```ejs
 <%
-// Список всех currently-logged in user's inbox.
+// Список всех currently-logged в user's inbox.
 %><ul class="message-list"><%
-  // Display each message, with a button to delete it.
+  // Отображаем каждое сообщение, с кнопкой удаления.
   _.each(messages, function (message) {
   %><li class="inbox-message" data-id="<%= message.id %>">
     <a href="/messages/<%= message.id %>"><%= message.subject %></a>
@@ -91,9 +91,9 @@ Partials автоматически наследуют view locals которы�
  %></ul>
 ```
 
-To refactor this, you might extrapolate the `<li>` into a partial to avoid duplicating code.  But if we do that, _we cannot rely on automatic inheritance_.  Partials only inherit locals that are available to the view, partial, or layout where they're called as a whole, but this `<li>` relies on a variable called `message`, which comes from the call to [`_.each()`](https://lodash.com/docs/3.10.1#forEach).
+Чтобы реорганизовать это, вы можете экстраполировать `<li>` в partial чтобы избежать дублирования кода.  Но если мы это сделаем, _мы не можем полагаться на автоматическое наследование_.  Partials наследуют только locals которые доступны для view, partial, или layout в котором их вызвали as a whole, но это `<li>` зависит от переменной  `message`, которая приходит из вызова [`_.each()`](https://lodash.com/docs/3.10.1#forEach).
 
-Fortunately, Sails also allows you to pass in an optional dictionary (aka plain JavaScript object) of overrides as the second argument to `partial()`:
+К счастью, Sails также позволяет вам передавать дополнительный словарь (как plain JavaScript объект) переопределений как второй аргумент в `partial()`:
 
 ```
 <%- partial(relPathToPartial, optionalOverrides) %>
