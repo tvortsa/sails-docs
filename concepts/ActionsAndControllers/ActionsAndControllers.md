@@ -15,7 +15,7 @@ function (req, res) {
 Каждый раз, когда веб-браузер указывает на `/hello` URL вашего сервера приложений, отображается страница с: &ldquo;Hi there!&rdquo;.
 
 ### Где объявлять actions?
-Actions объявляют в папке `api/controllers/` и подпапках (мы скоро поговорим о _controllers_ ). Чтобы файл был распознан как action, он должен быть _kebab-cased_ (содержать только символы нижнего регистра, числа и дефисы).  Ссылаясь на action в Sails (например, когда [связываем его с route](http://sailsjs.com/documentation/concepts/routes/custom-routes#?action-target-syntax)), спользуйте его путь относительно `api/controllers`, без расширения в имени файла.  Например, файл `api/controllers/user/find.js` представляет собой действие с идентификатором `user/find`.
+Actions объявляют в папке `api/controllers/` и подпапках (мы скоро поговорим о _controllers_ ). Чтобы файл был распознан как action, он должен быть _kebab-cased_ (содержать только символы нижнего регистра, числа и дефисы).  Ссылаясь на action в Sails (например, когда [связываем его с route](https://github.com/tvortsa/sails-docs/edit/1.0/concepts/routes/custom-routes#?action-target-syntax)), спользуйте его путь относительно `api/controllers`, без расширения в имени файла.  Например, файл `api/controllers/user/find.js` представляет собой действие с идентификатором `user/find`.
 
 ##### Расширения файлов для actions
 
