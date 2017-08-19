@@ -1,6 +1,6 @@
 # Helpers
 
-As of version 1.0, all Sails apps come with built-in support for **helpers**, simple utilities that let you share Node.js code in more than one place.  This helps you avoid repeating yourself, and makes development more efficient by reducing bugs and minimizing rewrites.  It also makes it much easier to create documentation for your app.
+С версии 1.0, все Sails приложения поставляются со встроенной поддержкой **helpers**, простые утилиты, которые позволяют вам делиться Node.js кодом в более чем одном месте.  This helps you avoid repeating yourself, and makes development more efficient by reducing bugs and minimizing rewrites.  It also makes it much easier to create documentation for your app.
 
 ### Overview
 
