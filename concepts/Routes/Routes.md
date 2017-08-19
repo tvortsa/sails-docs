@@ -2,16 +2,16 @@
 
 ### Обзор
 
-The most basic feature of any web application is the ability to interpret a request sent to a URL, then send back a response.  In order to do this, your application has to be able to distinguish one URL from another.
+Базовой функцией web приложения является интерпретация запроса переданного через URL, и отсылка ответа (response).  Для этого, приложение должно иметь возможность отличать один URL от другого.
 
-Like most web frameworks, Sails provides a router: a mechanism for mapping URLs to controllers and views.  **Routes** are rules that tell Sails what to do when faced with an incoming request.  There are two main types of routes in Sails: **custom** (or "explicit") and **automatic** (or "implicit").
+Как и в большинстве web фрэймворков, Sails предоставляет router: механизм соотношения URLs на контроллер и views.  **Routes** это правило которое говорит Sails что делать с входящим запросом.  Есть два основных типа routes в Sails: **custom** (или "явный") и **automatic** (или "неявный").
 
 
 ### Custom Routes
 
-Sails lets you design your app's URLs in any way you like- there are no framework restrictions.
+Sails позволяет вам создавать URLы вашего приложения без ограничений фрэймворка, как хотите.
 
-Every Sails project comes with [`config/routes.js`](http://sailsjs.com/documentation/reference/sails.config/sails.config.routes.html), a simple [Node.js module](http://nodejs.org/api/modules.html) that exports an object of custom, or "explicit" **routes**. For example, this `routes.js` file defines six routes; some of them point to a controller's action, while others route directly to a view.
+Каждый Sails проект имеет [`config/routes.js`](http://sailsjs.com/documentation/reference/sails.config/sails.config.routes.html), это простой [Node.js module](http://nodejs.org/api/modules.html) который экспортирует объект custom, или "явный" **routes**. Например, вот файл `routes.js` объявляющий шесть маршрутов; некоторые из них указывают на action контроллера, другие прямо на view.
 
 ```javascript
 // config/routes.js
