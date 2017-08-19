@@ -1,8 +1,8 @@
-# Using Sails programmatically
+# использование Sails програмно
 
-### Overview
+### Обзор
 
-The majority of the time, you will interact with Sails through its [command-line interface](http://sailsjs.com/documentation/reference/command-line-interface), starting servers with [`sails lift`](http://sailsjs.com/documentation/reference/command-line-interface/sails-lift).  However, Sails apps can also be started and manipulated from within other Node apps, using the [programmatic interface](http://sailsjs.com/documentation/reference/application).  One of the main uses for this interface is to run Sails apps inside of automated test suites.
+В большинстве случаев вы будете взаимодействовать с Sails через его [command-line interface](http://sailsjs.com/documentation/reference/command-line-interface), starting servers with [`sails lift`](http://sailsjs.com/documentation/reference/command-line-interface/sails-lift).  However, Sails apps can also be started and manipulated from within other Node apps, using the [programmatic interface](http://sailsjs.com/documentation/reference/application).  One of the main uses for this interface is to run Sails apps inside of automated test suites.
 
 ### Creating a Sails app programmatically
 
