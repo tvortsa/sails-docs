@@ -1,29 +1,29 @@
-# Working with Models
+# Работа с Models
 
-This section of the documentation focuses on the model methods provided by Waterline out of the box.  In addition to these, additional methods can come from hooks (like the [resourceful pubsub methods](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub)) or be hand-written in your app to wrap reusable custom code.
+Этот раздел документации посвящен моделям и методам которые они предоставляют в Waterline прямо из коробки. Кроме того, дополнительные методы можно получать от hooks (как в [resourceful pubsub methods](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub)) или могут быть написаны вручную в вашем приложении для обвертывания повторно используемого кастомного кода.
 
-> + For an in-depth introduction to models in Sails/Waterline, see [Concepts > Models and ORM > Models](http://sailsjs.com/documentation/concepts/models-and-orm/models).
-> + You can find an example of how to define a model [here](https://gist.github.com/rachaelshaw/f5bf442b2171154aa6021846d1a250f8).
-
-
+> + Более полное погружение в модели в Sails/Waterline, см [Concepts > Models and ORM > Models](http://sailsjs.com/documentation/concepts/models-and-orm/models).
+> + Примеры того как объявлять модели можно посмотреть [здесь](https://gist.github.com/rachaelshaw/f5bf442b2171154aa6021846d1a250f8).
 
 
-### Built-In Model Methods
 
-In general, model methods are _asynchronous_, meaning you cannot just call them and use the return value.  Instead, you must use callbacks, or promises.
+
+### Встроенные методы моделей
+
+Обычно, методы моделей _асинхронны_, что значит что вы не можете просто вызвать их и использовать возвращаемые ими значения.  Вместо этого, вы должны использовать callbacks, или promises.
 Most built-in model methods accept a callback as an optional final argument. If the callback is not supplied, a chainable Query object is returned, which has methods like `.where()` and `.exec()`. See [Working with Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries) for more on that.
 
 
  Method                | Summary
  --------------------- | ------------------------------------------------------------------------
- `.create()`           | Create record consisting of object passed in
- `.find()`             | Lookup an array of records which match the specified criteria
- `.findOne()`          | Lookup a single record which matches the specified criteria, or send back `null` if it doesn't.
- `.update()`           | Update records matching the specified criteria, setting the specified object of `attrName:value` pairs.
- `.destroy()`          | Destroy records matching the specified criteria.
- `.findOrCreate()`     | Lookup a single record which matches the specified criteria, or create it if it doesn't.
- `.count()`            | Get the total count of records which match the specified criteria.
- `.native()`/`query()` | Make a direct call to the underlying database driver.
+ `.create()`           | Создает запись состоящую из переданного объекта
+ `.find()`             | Ищет массив записей отвечающую переданному критерию
+ `.findOne()`          | Ищет одну запись отвечающую переданному критерию, или возвращает `null` если такой записи не найдено.
+ `.update()`           | Обновляет записи отвечающие переданному критерию, setting the specified object of `attrName:value` pairs.
+ `.destroy()`          | Удаляет записи отвечающие переданному критерию.
+ `.findOrCreate()`     | Ищет одну запись отвечающую переданному критерию, или создает ее если такая запись не найдена.
+ `.count()`            | Возвращает количество записей отвечающих переданному критерию.
+ `.native()`/`query()` | Прямой вызов в подлежащий драйвер БД.
  `.stream()`           | Return a readable (object-mode) stream of records which match the specified criteria
 
 
