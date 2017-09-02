@@ -6,7 +6,7 @@
 
 В Sails, helpers это рекомендуемый подход для выноса повторяющегося кода в отдельный файл, и затем его повторное использование в разных [actions](https://github.com/tvortsa/sails-docs/blob/1.0/concepts/ActionsAndControllers/ActionsAndControllers.md), [custom responses](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses), [command-line scripts](https://www.npmjs.com/package/machine-as-script), [unit tests](http://sailsjs.com/documentation/concepts/testing), и даже в других helpers. Вы _не обязаны_ использовать helpers-- на самом деле по-началу это скорее всего и не нужно.  But as your code base grows, helpers will become more and more important for your app's maintainability.  (Plus, they're really convenient.)
 
-For example, in the course of creating the actions that your Node.js/Sails app uses to respond to client requests, you will sometimes find yourself repeating code in several places.  That can be pretty bug-prone, of course, not to mention annoying.  Fortunately, there's a neat solution: replace the duplicate code with a call to a custom helper:
+Например, в процессе создания действия которое ваше приложение Node.js/Sails использует для ответа на клиентский запрос, вы иногда обнаружите, что повторяете код в нескольких местах.  Это может приводить к ошибкам, не говоря уже о том что это раздражает.  Fortunately, there's a neat solution: replace the duplicate code with a call to a custom helper:
 
 ```javascript
 sails.helpers.formatWelcomeMessage({ name: 'Bubba' }).exec(function(err, greeting) {
@@ -19,11 +19,11 @@ sails.helpers.formatWelcomeMessage({ name: 'Bubba' }).exec(function(err, greetin
 });
 ```
 
-> The example above demonstrates calling a helper from an action, but helpers can be called from almost anywhere in your code; as long as that place has access to the [`sails` app instance](http://sailsjs.com/documentation/reference/application).
+> Пример выше демонстрирует вызов helper из action, но helpers можно вызывать почти откуда угодно в вашем коде; до тех пор, пока это место имеет доступ к [`sails` app instance](http://sailsjs.com/documentation/reference/application).
 
-### How helpers are defined
+### Как объявить helpers
 
-Here's an example of a small, well-defined helper:
+Вот пример небольшого, well-defined хелпера:
 
 ```javascript
 // api/helpers/format-welcome-message.js
@@ -35,14 +35,14 @@ module.exports = {
   description: 'Return a personalized greeting based on the provided name.',
 
 
-  sync: true, // See the `Synchronous helpers` documentation later in this document
+  sync: true, // смотрите документацию о `Synchronous helpers` далее в этом документе
 
 
   inputs: {
 
     name: {
       type: 'string',
-      description: 'The name of the person to greet.',
+      description: 'Имя персоны для приветствия.',
       required: true
     }
 
@@ -51,7 +51,7 @@ module.exports = {
 
   fn: function (inputs, exits) {
 
-    var greeting = 'Hello, ' + inputs.name + '!';
+    var greeting = 'Привет, ' + inputs.name + '!';
     return exits.success(greeting);
 
   }
@@ -59,32 +59,32 @@ module.exports = {
 };
 ```
 
-Though simple, this file displays all the characteristics of a good helper: it starts with a friendly name and description that make it immediately clear what the utility does, it describes its inputs so that it&rsquo;s easy to see how the utility is used, and it accomplishes a discrete task with a minimum amount of code.
+Несмотря на простоту, этот файл отображает все характеристики хорошего helper: Он начинается с friendly name и описания - description которые сразу дают понять, что делает утилита, it describes its inputs so that it&rsquo;s так что сразу видно как использовать эту утилиту, и он выполняет дискретную задачу с минимальным количеством кода.
 
-> Look familiar?  Much like [actions2](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2), helpers follow the [node-machine specification](http://node-machine.org/spec).
+> Выглядит знакомо?  Much like [actions2](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2), helpers follow the [node-machine specification](http://node-machine.org/spec).
 
-##### The `fn` function
+##### Функция `fn`
 
-The core of the helper is the `fn` function, which contains the actual code that the helper will run.  The function takes two arguments: `inputs` (a dictionary of input values) and `exits` (a dictionary of exit functions).  The job of `fn` is to utilize and process the inputs, and then call one of the provided exits to return control back to whatever code called the helper.  Note that as opposed to a typical Javascript function that uses `return` to provide a value to the caller, helpers provide that value (aka the &ldquo;output&rdquo;) by passing it as an argument to one of the exits.
+Ядром helper является функция `fn`, которая и содержит сам код который helper будет выполнять. Функция принимает два аргумента: `inputs` (словарь вводимых значений) и `exits` (словарь exit функций).  Задача `fn` заключается в использовании и обработке входных данных, .  Note thaа затем вызвать один из предоставленных выходов, чтобы вернуть управление обратно в любой код, называемый помощником в отличие от типичной функции Javascript, которая использует `return` для предоставления значения вызывающей стороне, помощники предоставляют это значение (как &ldquo;output&rdquo;) передавая его как аргумент в один из exits.
 
 ##### Inputs
 
-A helper&rsquo;s _inputs_ are analogous to the parameters of a typical Javascript function: they define the values that the code has to work with.  However, unlike function parameters, inputs are _typed_ and can be _required_.  If a helper is called using inputs of the wrong type, or missing a required input, it will trigger an error.  Thus, helpers are _self-validating_.
+A helper&rsquo;s _inputs_ это аналог параметров в обычной Javascript функции: они определяют значения с которыми код должен работать.  Тем не менее, в отличие от function parameters, inputs это _typed_ и могут быть _required_.  Если helper вызван с inputs неправильного типа, или без требуемого input, произойдет переключение на error.  Таким образом, helpers являются _self-validating_.
 
-Inputs for a helper are defined in the `inputs` dictionary, with each input being composed of, at minimum, a `type` property.  Helper inputs currently support the following types:
+Inputs для helper объявляются в словаре `inputs` , with each input being composed of, at minimum, a `type` property.  Helper inputs в настоящее время поддерживают следующие типы:
 
-* `string` - a string value
-* `number` - a number value (both integers and floats are valid)
-* `boolean` - the value `true` or `false`
-* `ref` - a Javascript variable reference.  Technically this can be _any_ value, but typically it refers to an object like a dictionary or an array.
+* `string` - строковая величина
+* `number` - числовая величина (валидны и integers и floats)
+* `boolean` - значения `true` или `false`
+* `ref` - Javascript variable reference.  Технически это может быть _любое_ значение, но обычно это ссылка на object типа dictionary или array.
 
-You can provide a default value for an input by setting its `defaultsTo` property.
+Можно задавать дефолтные значения в input через настройку свойства `defaultsTo`.
 
 > These are the same data types (and related semantics) that you might already be accustomed to from [defining model attributes](http://sailsjs.com/documentation/concepts/models-and-orm/attributes).
 
 ##### Exits
 
-Exits describe the different possible outcomes a helper can have.  Every helper automatically supports the `error` and `success` exits.  Additionally, you are encouraged to expose custom exits to allow userland code that calls your helper to handle specific error cases.
+Exits описывают различные возможные результаты, которые могут иметь helper.  Every helper automatically supports the `error` and `success` exits.  Additionally, you are encouraged to expose custom exits to allow userland code that calls your helper to handle specific error cases.
 
 > Custom exits for a helper are defined in the `exits` dictionary, with each exit definition being composed of, at minimum, a `description` property.  For more advanced options, see the [full specification](http://node-machine.org/spec).
 
