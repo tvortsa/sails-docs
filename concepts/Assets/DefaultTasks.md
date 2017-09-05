@@ -20,53 +20,53 @@
 
 ##### clean
 
-> This grunt task is configured to clean out the contents in the `.tmp/public/` of your sails project.
+> Эта grunt задача сконфигурирована на очистку содержимого в `.tmp/public/` вашего проекта sails.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-clean)
 
 ##### coffee
 
-> Compiles coffeeScript files from `assets/js/` into Javascript and places them into `.tmp/public/js/` directory.
+> Компилирует coffeeScript файлы из `assets/js/` в Javascript и размещает их в папке `.tmp/public/js/`.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-coffee)
 
 ##### concat
 
-> Concatenates JavaScript and css files, and saves concatenated files in `.tmp/public/concat/` directory.
+> Соединяет JavaScript и css файлы, и сохраняет соединенные файлы в папке `.tmp/public/concat/` .
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-concat)
 
 ##### copy
 
 > **dev task config**
-> Copies all directories and files, except coffeescript and less files, from the sails assets folder into the `.tmp/public/` directory.
+> Копирует все файлы и папки, кроме coffeescript и less файлов, из папки активов sails в папку `.tmp/public/`.
 
 > **build task config**
-> Copies all directories and files from the .tmp/public directory into a www directory.
+> Копирует все файлы и папки из папки .tmp/public в папку www.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-copy)
 
 ##### cssmin
 
-> Minifies css files and places them into `.tmp/public/min/` directory.
+> Минифицирует css файлы и помещает их в папку `.tmp/public/min/` .
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-cssmin)
 
 ##### jst
 
-> Precompiles Underscore templates to a `.jst` file. (i.e. it takes HTML template files and turns them into tiny JavaScript functions). This can speed up template rendering on the client, and reduce bandwidth usage.
+> Прекомпиляция Underscore шаблонов в `.jst` файлы. (т.e. берет файлы HTML шаблонов и turns их в tiny JavaScript функции). Это ускоряет рендеринг шаблонов на клиенте, и сокращает использование полосы пропускания.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-jst)
 
 ##### less
 
-> Compiles LESS files into CSS. Only the `assets/styles/importer.less` is compiled. This allows you to control the ordering yourself, i.e. import your dependencies, mixins, variables, resets, etc. before other stylesheets.
+> Компилирует файлы LESS в CSS. Компилируется только файл `assets/styles/importer.less` . Это позволяет вам самому контролировать порядок, импорт зависимостей, mixins, variables, resets, и т.п. прежде остальных таблиц стилей.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-less)
 
 ##### sails-linker
 
-> Automatically inject `<script>` tags for JavaScript files and `<link>` tags for css files.  Also automatically links an output file containing precompiled templates using a `<script>` tag. A much more detailed description of this task can be found [here](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking), but the big takeaway is that script and stylesheet injection is *only* done in files containing `<!--SCRIPTS--><!--SCRIPTS END-->` and/or `<!--STYLES--><!--STYLES END-->` tags.  These are included in the default **views/layout.ejs** file in a new Sails project.  If you don't want to use the linker for your project, you can simply remove those tags.
+> Автоматически вставляет тэги `<script>` для JavaScript файлов и `<link>` тэги для css файлов.  Также автоматически линкует выходной файл, содержащий предварительно скомпилированные шаблоны используя `<script>` тэг. Более подробное описание этой задачи [здесь](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking), но большой взнос заключается в том, что сценарий и вставка таблицы стилей * выполняется * только в файлах, содержащих `<!--SCRIPTS--><!--SCRIPTS END-->` и/или `<!--STYLES--><!--STYLES END-->` тэги.  TОни включены по-умолчанию в файл **views/layout.ejs** нового Sails проекта.  Если вы не хотите использовать linker для вашего проекта, вы можете просто удалить эти теги.
 
 > [usage docs](https://github.com/Zolmeister/grunt-sails-linker)
 
