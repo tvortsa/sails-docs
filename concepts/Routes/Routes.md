@@ -26,13 +26,13 @@ module.exports.routes = {
 ```
 
 
-Each **route** consists of an **address** (on the left, e.g. `'get /me'`) and a **target** (on the right, e.g. `'UserController.profile'`)  The **address** is a URL path and (optionally) a specific [HTTP method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). The **target** can be defined a number of different ways ([see the expanded concepts section on the subject]https://github.com/tvortsa/sails-docs/blob/1.0/concepts/Routes/RouteTargetSyntax.md)), but the two different syntaxes above are the most common.  When Sails receives an incoming request, it checks the **address** of all custom routes for matches.  If a matching route is found, the request is then passed to its **target**.
+Каждый **route** состоит из **address** (слева, e.g. `'get /me'`) и **target** (справа, e.g. `'UserController.profile'`)  Где **address** это URL и (опционально) заданный [HTTP метод](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). А **target** может быть определен несколькими различными способами ([см. раздел расширенных концепций по теме]https://github.com/tvortsa/sails-docs/blob/1.0/concepts/Routes/RouteTargetSyntax.md)), но два разных синтаксиса выше являются наиболее распространенными.  Когда Sails принимает входящий запрос, он проверяет **address** всех кастомных routes на совпадение.  Если совпадение найдено, запрос передается в его **target**.
 
-For example, we might read `'get /me': 'UserController.profile'` as:
+Например, мы могли бы прочесть `'get /me': 'UserController.profile'` как:
 
-> "Hey Sails, when you receive a GET request to `http://mydomain.com/me`, run the `profile` action of `UserController`, would'ya?"
+> "Эй Sails, если получишь запрос GET по адресу `http://mydomain.com/me`, запусти действие `profile` контроллера `UserController`, хорошо?"
 
-What if I want to change the view layout within the route itself?  No problem we could:
+Что делать, если я хочу изменить макет представления в самом маршруте?  Нет проблемм:
 
 ```javascript
 'get /privacy': {
@@ -44,8 +44,8 @@ What if I want to change the view layout within the route itself?  No problem we
 ```
 
 #### Notes
-+ Just because a request matches a route address doesn't necessarily mean it will be passed to that route's target _directly_.  For instance, HTTP requests will usually pass through some [middleware](http://sailsjs.com/documentation/concepts/Middleware) first.  And if the route points to a controller [action](http://sailsjs.com/documentation/concepts/Controllers?q=actions), the request will need to pass through any configured [policies](http://sailsjs.com/documentation/concepts/Policies) first.  Finally, there are a few special [route options](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options) which allow a route to be "skipped" for certain kinds of requests.
-+ The router can also programmatically **bind** a **route** to any valid route target, including canonical Node middleware functions (i.e. `function (req, res, next) {}`).  However, you should always use the conventional [route target syntax](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html) when possible- it streamlines development, simplifies training, and makes your app more maintainable.
++ Просто потому, что запрос соответствует адресу маршрута, не обязательно означает, что он будет передан в целевой маршрут  _напрямую_.  Например, HTTP запросы обычно будут передаваться сперва через [middleware](http://sailsjs.com/documentation/concepts/Middleware).  И если маршрут указывает на контроллер [action](http://sailsjs.com/documentation/concepts/Controllers?q=actions),запрос сперва должен пройти через любой настроенный [policies](http://sailsjs.com/documentation/concepts/Policies). Наконец есть несколько специальных [route options](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options) которые позволяют маршруту "быть пропущенным" для определенных видов запросов.
++ Router может также программно **bind**  **route** к любой валидной route target, включая каноническую Node middleware functions (i.e. `function (req, res, next) {}`).  However, you should always use the conventional [route target syntax](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html) when possible- it streamlines development, simplifies training, and makes your app more maintainable.
 
 
 
