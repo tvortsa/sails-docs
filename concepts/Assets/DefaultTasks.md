@@ -2,21 +2,21 @@
 
 ### Обзор
 
-Пайплайн активов встроенный в Sails это набор задач Grunt настроены с использованием стандартных настроек по умолчанию, призванных сделать ваш проект более последовательным и продуктивным. Весь рабочий процесс интерфейса frontend полностью настраивается, в то время как он предоставляет некоторые задачи по умолчанию из коробки. Sails упрощает это с помощью [конфигурирования новых задач](http://sailsjs.com/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) под ваши нужды.
+Пайплайн активов встроенный в Sails это набор задач Grunt настроены с использованием стандартных настроек по умолчанию, призванных сделать ваш проект более последовательным и продуктивным. Весь рабочий процесс интерфейса frontend полностью настраивается, в то время как он предоставляет некоторые задачи по умолчанию из коробки. Sails упрощает это с помощью [конфигурирования новых задач](https://github.com/tvortsa/sails-docs/blob/1.0/concepts/Assets/TaskAutomation.md?q=task-configuration) под ваши нужды.
 <!-- change link to: /documentation/concepts/assets/task-automation#?task-configuration once new site is live -->
 
-Here are a few things that the default Grunt configuration in Sails does to help you out:
-- Automatic LESS compilation
-- Automatic JST compilation
-- Automatic Coffeescript compilation
-- Optional automatic asset injection, minification, and concatenation
-- Creation of a web ready public directory
-- File watching and syncing
+Вот несколько вещей, которые конфигурация Grunt по умолчанию в Sails делает, чтобы помочь вам:
+- Автоматическая компиляция LESS
+- Автоматическая компиляция JST 
+- Автоматическая компиляция Coffeescript 
+- Опциональная автоматическая asset injection, minification, и concatenation
+- Создание web ready public директории
+- Просмотр и синхронизация файлов
 - Optimization of assets in production
 
-### Default Grunt tasks
+### Дефолтный задачи Grunt
 
-Below is a list of the Grunt tasks that are included by default in new Sails projects:
+Ниже приведен список задач Grunt которые включаются по умолчанию в новый Sails проект:
 
 ##### clean
 
