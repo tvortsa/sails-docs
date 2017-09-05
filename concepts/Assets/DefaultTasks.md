@@ -1,8 +1,8 @@
-# Default tasks
+# Задачи по дефолту
 
-### Overview
+### Обзор
 
-The asset pipeline bundled in Sails is a set of Grunt tasks configured with conventional defaults designed to make your project more consistent and productive. The entire frontend asset workflow is completely customizable, while it provides some default tasks out of the box. Sails makes it easy to [configure new tasks](http://sailsjs.com/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) to fit your needs.
+Пайплайн активов встроенный в Sails это набор задач Grunt настроены с использованием стандартных настроек по умолчанию, призванных сделать ваш проект более последовательным и продуктивным. Весь рабочий процесс интерфейса frontend полностью настраивается, в то время как он предоставляет некоторые задачи по умолчанию из коробки. Sails упрощает это с помощью [конфигурирования новых задач](http://sailsjs.com/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) под ваши нужды.
 <!-- change link to: /documentation/concepts/assets/task-automation#?task-configuration once new site is live -->
 
 Here are a few things that the default Grunt configuration in Sails does to help you out:
