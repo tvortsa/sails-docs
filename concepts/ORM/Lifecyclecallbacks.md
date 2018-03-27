@@ -1,39 +1,39 @@
-# Lifecycle callbacks
+# Коллбэки жизненного цикла
 
-### Overview
+### Обзор
 
-Lifecycle callbacks are functions that are automagically called before or after certain _model_ actions. For example, we sometimes use lifecycle callbacks to automatically hash a password before creating or updating an `Account` model.
+Обратные вызовы жизненного цикла - это функции, которые автоматически вызываются до или после certain _model_ actions. Например, иногда мы используем lifecycle callbacks для автоматического хеширования пароля перед созданием или обновлением модели `Account`.
 
-Sails exposes a handful of lifecycle callbacks by default.
+Sails предоставляет по умолчанию несколько обратных вызовов жизненного цикла.
 
-No lifecycle callbacks are run on bulk inserts of data using `createEach`.
+Никакие обратные вызовы жизненного цикла не выполняются на объемных вставках данных, используя `createEach`.
 
 
-##### Callbacks on `create`
+##### Коллбэки в `create`
 
-The `afterCreate` lifecycle callback will only be run on queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags see [Waterline Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+Коллбэк жизненного цикла `afterCreate` будут выполняться только по запросам, у которых `fetch` meta flag установлен в `true`. Об использовании флагов `meta` см. [Waterline Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
   - beforeCreate: fn(recordToInsert, cb)
   - afterCreate: fn(newlyInsertedRecord, cb)
 
-##### Callbacks on `update`
+##### Коллбэки в `update`
 
-The `afterUpdate` lifecycle callback will only be run on queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags see [Waterline Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+Коллбэк жизненного цикла `afterUpdate` будут выполняться только по запросам, у которых `fetch` meta flag установлен в `true`. Об использовании флагов `meta` flags see [Waterline Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
   - beforeUpdate: fn(valuesToUpdate, cb)
   - afterUpdate: fn(updatedRecord, cb)
 
-##### Callbacks on `destroy`
+##### Коллбэки в `destroy`
 
-The `afterDestroy` lifecycle callback will only be run on queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags see [Waterline Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+Коллбэк жизненного цикла `afterDestroy` будут выполняться только по запросам, у которых `fetch` meta flag установлен в `true`. For more information on using the `meta` flags see [Waterline Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
   - beforeDestroy: fn(criteria, cb)
   - afterDestroy: fn(destroyedRecord, cb)
 
 
-### Example
+### Пример
 
-If you want to hash a password before saving in the database, you might use the `beforeCreate` lifecycle callback.
+Если вы хотите хешировать пароль перед сохранением в базе данных, вы можете использовать коллбэк жизненного цикла `beforeCreate`.
 
 ```javascript
 var bcrypt = require('bcrypt');
@@ -57,10 +57,10 @@ module.exports = {
   },
 
 
-  // Lifecycle Callbacks
+  // Коллбэк жизненного цикла
   beforeCreate: function (values, cb) {
 
-    // Hash password
+    // Хэш пароля
     bcrypt.hash(values.password, 10, function(err, hash) {
       if(err) return cb(err);
       values.password = hash;
