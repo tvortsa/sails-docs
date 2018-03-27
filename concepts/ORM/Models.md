@@ -67,49 +67,50 @@ query.exec(function (err, rose) {
 
 ##### Promises
 
-Как альтернатива коллбэкам, Waterline также включает опциональную поддержку promises.  Вместо вызова `.exec()` на запросе, вы можете выбрать вызов `.then()`, `.spread()`, или `.catch()`, which will begin executing the query and return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
+Как альтернатива коллбэкам, Waterline также включает опциональную поддержку promises.  Вместо вызова `.exec()` на запросе, вы можете выбрать вызов `.then()`, `.spread()`, или `.catch()`, который начнет выполнение запроса и вернет [Bluebird promise](https://github.com/petkaantonov/bluebird).
 
-> If you are not already an avid user of promises, don't worry-- [just stick with `.exec()`](https://github.com/balderdashy/sails/issues/3459#issuecomment-171039631).  The decision of whether to use callbacks or promises is a question of style, so don't feel pressured one way or the other.
+> Если вы еще не являетесь активным пользователем promises, не волнуйтесь-- [just stick with `.exec()`](https://github.com/balderdashy/sails/issues/3459#issuecomment-171039631).  Решение о том, следует ли использовать обратные вызовы или обещания, является вопросом стиля, поэтому не парьтесь что правильнее.
 
-### Resourceful pubsub methods
+### Resourceful pubsub методы
 
-Sails also provides a few other "resourceful pubsub" (or "RPS") methods, specifically designed for performing simple realtime operations using dynamic rooms.  For more information about those methods, see [Reference > WebSockets > Resourceful PubSub](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub).
+Sails также предоставляет несколько других "resourceful pubsub" (или "RPS") методов, специально предназначенные для выполнения простых операций в реальном времени с использованием динамических комнат.  Для получения дополнительной информации об этих методах см.
+ [Reference > WebSockets > Resourceful PubSub](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub).
 
 
-### Custom model methods
+### Кастомные методы моделей
 
-In addition to the built-in functionality provided by Sails, you can also define your own custom model methods.  Custom model methods are most useful for extrapolating controller code that relates to a particular model; i.e. this allows you to pull code out of your controllers and into reusuable functions that can be called from anywhere (i.e. don't depend on `req` or `res`.)
+Помимо встроеной функциональности Sails, вы можете определять собственные методы моделей.  Позьзовательские методы модели наиболее полезны для экстраполяции кода контроллера, который относится к конкретной модели; т.e. это позволяет извлечь код из ваших контроллеров и повторно использовать функции, которые можно вызывать из любого места (т.e. не зависимо от `req` or `res`.)
 
-> This feature takes advantage of the fact that models ignore unrecognized settings, so you do need to be careful about inadvertently overriding built-in methods (don't define methods named "create", etc.)
+> Эта особенность использует тот факт, что модели игнорируют неопознанные параметры, поэтому вам нужно быть осторожными чтобы случайно не переопределить встроенные методы (не создавайте методы с именем "create", и т.п.)
 
-Model methods can be synchronous or asynchronous functions, but more often than not, they're _asynchronous_.  By convention, asynchronous model methods should be 2-ary functions, which accept `options` as their first argument, and a Node-style callback as the second argument.  Alternatively, instead of a callback, you might choose to return a promise (both strategies work just fine- it's a matter of preference.  If you don't have a preference, stick with Node callbacks.)
+Методы моделей могут быть и синхронными и асинхронными функциями, но чаще всего, они _asynchronous_.  По соглашению, асинхронные методы моделей должны быть 2-ary functions, которые принимают `options` как свой первый аргумент, и коллбэк в Node-стиле как второй аргумент.  Вместо коллбэка можно возвращать promise (обе стратегии работают просто отлично - это вопрос предпочтения.  Если у вас нет preference, придерживайтесь Node callbacks.)
 
-##### Best practices
+##### Хорошие практики
 
-One best practice is to write your static model method so that it can accept either a record OR its primary key value.  For model methods that operate on/from _multiple_ records at once, you should allow an array of records OR an array of primary key values to be passed in.  This takes more time to write, but makes your method much more powerful.  And since you're doing this to extrapolate commonly-used logic anyway, it's usually worth the extra effort.
+Одна из лучших практик заключается в том, чтобы написать свой метод статической модели, чтобы он мог принимать либо запись OR, либо ее значение первичного ключа.  Для моделей, которые работают/from _multiple_ records at once, вы должны разрешить массив записей OR массив значений первичного ключа, который должен быть передан.  Это занимает больше времени для написания, но делает ваш метод намного более мощным. И так как вы делаете это, чтобы экстраполировать часто используемую логику, это обычно стоит дополнительных усилий.
 
-For example:
+Например:
 
 ```js
-// in api/models/Monkey.js...
+// в api/models/Monkey.js...
 
-// Find monkeys with the same name as the specified person
+// Ищем monkeys с тем же именем, что и указанное лицо
 findWithSameNameAsPerson: function (opts, cb) {
 
   var person = opts.person;
 
-  // Before doing anything else, check if a primary key value
-  // was passed in instead of a record, and if so, lookup which
-  // person we're even talking about:
+  // Прежде чем делать что-либо еще, проверьте, имеет ли значение первичного ключа
+  // был принят вместо записи, и если да, то поиск, который
+  // человек, о котором мы даже говорим:
   (function _lookupPersonIfNecessary(afterLookup){
-    // (this self-calling function is just for concise-ness)
+    // (это само-вызываемая функция просто для краткости)
     if (typeof person === 'object')) return afterLookup(null, person);
     Person.findOne(person).exec(afterLookup);
   })(function (err, person){
     if (err) return cb(err);
     if (!person) {
       err = new Error();
-      err.message = require('util').format('Cannot find monkeys with the same name as the person w/ id=%s because that person does not exist.', person);
+      err.message = require('util').format('Невозможно найти monkeys с тем же именем, что и персона w/ id=%s потому что такая персона не существует.', person);
       err.status = 404;
       return cb(err);
     }
@@ -124,7 +125,7 @@ findWithSameNameAsPerson: function (opts, cb) {
 }
 ```
 
-Then you can do:
+Затем вы можете:
 
 ```js
 Monkey.findWithSameNameAsPerson(albus, function (err, monkeys) { ... });
@@ -134,11 +135,11 @@ Monkey.findWithSameNameAsPerson(37, function (err, monkeys) { ... });
 
 > For more tips, read about the incident involving [Timothy the Monkey]().
 
-##### What about instance methods?
+##### Что насчет instance methods?
 
-As of Sails v1.0, instance methods have been removed from Sails and Waterline.  While instance methods like `.save()` and `.destroy()` were sometimes convenient in app code, in Node.js at least, many users found that they led to unintended consequences and design pitfalls.
+Начиная с версии Sails v1.0, instance methods были убраны из Sails и Waterline.  While instance methods like `.save()` and `.destroy()` were sometimes convenient in app code, in Node.js at least, многие пользователи обнаружили, что они привели к непредвиденным последствиям и ловушкам проектирования.
 
-For example, consider an app that manages wedding records.  It might seem like a good idea to write an instance method on the Person model to update the `spouse` attribute on both individuals in the database.  This would allow you to write controller code like:
+НАпример, рассмотрите приложение, которое управляет свадебными записями.  Может показаться хорошей идеей записывать как instance method в модели Person для обновления атрибута `spouse` (супруг) в обоих индивидуумах в БД.  Это позволит вам написать код контроллера, например:
 
 ```js
 personA.marry(personB, function (err) {
@@ -147,9 +148,9 @@ personA.marry(personB, function (err) {
 })
 ```
 
-Which looks great...until it comes time to implement a slightly different action with roughly the same logic, but where the only available data is the id of "personA" (not the entire record.)  In that case, you're stuck rewriting your instance method as a static method anyway!
+Выглядит здорово... пока не придет время для осуществления немного другого действия с примерно той же логикой, где доступны только данные об id of "personA" (а не вся запись.)  ТОгда, вам придется переписывать ваш instance method как static method всеравно!
 
-A better strategy is to write a custom (static) model method from the get-go.  This makes your function more reusable/versatile, since it will be accessible whether or not you have an actual record instance on hand.  You might refactor the code from the previous example to look like:
+Лучше всего писать custom (static) метод модели с самого начала. Это делает вашу функцию более reusable/универсальной, поскольку он будет доступен независимо от того, имеется ли у вас фактический экземпляр записи.  Вы можете реорганизовать код из предыдущего примера, чтобы выглядеть так:
 
 ```js
 Person.marry(personA.id, personB.id, function (err) {
@@ -158,9 +159,9 @@ Person.marry(personA.id, personB.id, function (err) {
 })
 ```
 
-### Case Sensitivity
+### Чувствительность к регистру
 
-Queries in Sails 1.0 are no longer forced to be case *insensitive* regardless of how the database processes the query. This leads to much improved query performance and better index utilization. Most databases are case *sensitive* by default but in the rare cases where they aren't and you would like to change that behavior you must modify the database to do so.
+Запросы в Sails 1.0 are no longer forced to be case *insensitive* regardless of how the database processes the query. This leads to much improved query performance and better index utilization. Most databases are case *sensitive* by default but in the rare cases where they aren't and you would like to change that behavior you must modify the database to do so.
 
 For example by default MySQL will use a database collation that is case *insensitive* which is different from sails-disk so you may experience different results from development to production. In order to fix this you can set the tables in your MySQL database to a case *sensitive* collation such as `utf8_bin`.
 
