@@ -6,7 +6,7 @@
 
 В Sails, helpers это рекомендуемый подход для выноса повторяющегося кода в отдельный файл, и затем его повторное использование в разных [actions](https://github.com/tvortsa/sails-docs/blob/1.0/concepts/ActionsAndControllers/ActionsAndControllers.md), [custom responses](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses), [command-line scripts](https://www.npmjs.com/package/machine-as-script), [unit tests](http://sailsjs.com/documentation/concepts/testing), и даже в других helpers. Вы _не обязаны_ использовать helpers-- на самом деле по-началу это скорее всего и не нужно.  But as your code base grows, helpers will become more and more important for your app's maintainability.  (Plus, they're really convenient.)
 
-Например, в процессе создания действия которое ваше приложение Node.js/Sails использует для ответа на клиентский запрос, вы иногда обнаружите, что повторяете код в нескольких местах.  Это может приводить к ошибкам, не говоря уже о том что это раздражает.  Fortunately, there's a neat solution: replace the duplicate code with a call to a custom helper:
+Например, в процессе создания действия которое ваше приложение Node.js/Sails использует для ответа на клиентский запрос, вы иногда обнаружите, что повторяете код в нескольких местах.  Это может приводить к ошибкам, не говоря уже о том что это раздражает.  К счастью, есть прекрасное решение: замените дублирующийся код вызовом своего хелпера:
 
 ```javascript
 sails.helpers.formatWelcomeMessage({ name: 'Bubba' }).exec(function(err, greeting) {
@@ -80,13 +80,13 @@ Inputs для helper объявляются в словаре `inputs` , with ea
 
 Можно задавать дефолтные значения в input через настройку свойства `defaultsTo`.
 
-> These are the same data types (and related semantics) that you might already be accustomed to from [defining model attributes](http://sailsjs.com/documentation/concepts/models-and-orm/attributes).
+> Это те же типы данных (и родственная семантика) к которым вы уже привыкли [defining model attributes](http://sailsjs.com/documentation/concepts/models-and-orm/attributes).
 
 ##### Exits
 
-Exits описывают различные возможные результаты, которые могут иметь helper.  Every helper automatically supports the `error` and `success` exits.  Additionally, you are encouraged to expose custom exits to allow userland code that calls your helper to handle specific error cases.
+Exits описывают различные возможные результаты, которые могут иметь helper.  Каждый helper автоматически поддерживает экситы `error` и `success`.  Кроме того, можно создавать собственные чтобы разрешить код пользователя, вызывающий вашего помощника для обработки конкретных случаев ошибок.
 
-> Custom exits for a helper are defined in the `exits` dictionary, with each exit definition being composed of, at minimum, a `description` property.  For more advanced options, see the [full specification](http://node-machine.org/spec).
+> Кастомные экситы хелперов объвляют в словаре `exits`, каждое объявление exit должно включать, как минимум, свойство `description`.  For more advanced options, see the [full specification](http://node-machine.org/spec).
 
 This helps guarantee your code&rsquo;s maintainability by providing strong conventions.  For example, a helper called &ldquo;Create user&rdquo; could expose a custom `usernameConflict` exit.  The helper's `fn` might trigger this special exit if the provided username already exists, allowing your userland code to handle this specific scenario after calling the helper without muddying up your result values or resorting to extra `try/catch/switch` blocks.
 
